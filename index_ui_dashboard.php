@@ -7,7 +7,7 @@
     <title>People Health Pharmacy </title>
 </head>
 <body>
-    <h1>This is the output</h1>
+    <h1>People Health Pharmacy</h1>
 <?php 
     $sql_query = "SELECT * FROM products;";
     $result = mysqli_query($conn, $sql_query);
