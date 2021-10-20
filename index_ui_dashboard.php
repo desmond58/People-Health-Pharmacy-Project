@@ -16,7 +16,7 @@
 
     if ($resultCheck > 0){
         while ($row = mysqli_fetch_assoc($result)){
-            echo $row['product_name']."<br>";
+            echo $row['product_name']." have quantity of ".$row['product_quantity']."<br>";
         }
     }
 ?>
