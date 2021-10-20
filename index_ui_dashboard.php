@@ -4,9 +4,10 @@
 
 <html>
 <head>
-    <title></title>
+    <title>Sample Output</title>
 </head>
 <body>
+    <h1>This is the output</h1>
 <?php 
     $sql_query = "SELECT * FROM products;";
     $result = mysqli_query($conn, $sql_query);
@@ -19,6 +20,7 @@
 
             $json_array[] = $row;
         }
+        echo '<h1>This is the JSON format array output</h1>';
         print_r(json_encode($json_array));
     }
 ?>
