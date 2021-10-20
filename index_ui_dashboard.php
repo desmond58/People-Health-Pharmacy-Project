@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Sample Output</title>
+    <title>People Health Pharmacy </title>
 </head>
 <body>
     <h1>This is the output</h1>
