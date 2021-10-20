@@ -13,11 +13,13 @@
     $resultCheck = mysqli_num_rows($result);
 
     //validate number of row return from database
-
     if ($resultCheck > 0){
         while ($row = mysqli_fetch_assoc($result)){
             echo $row['product_name']." have quantity of ".$row['product_quantity']."<br>";
+
+            $json_array[] = $row;
         }
+        print_r(json_encode($json_array));
     }
 ?>
 </body>
