@@ -1,69 +1,138 @@
-<?php require "assets/function.php" ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-	<?php require "assets/autoloader.php" ?>
-	<style type="text/css">
-	<?php include 'css/customStyle.css'; ?>
+<?php
+	session_start();
 	
-	</style>
-</head>
-<body style="background: url('photo/login.jpg');background-size: 100%">
-	<div class="login-box">
-  <div class="well well-sm center" style="width: 25%;margin: auto;padding:4px 11px;margin-top: 111px;text-align: center;">
-  	<h3 class="center">Login</h3>
-  </div>
-  <!-- /.login-logo -->
-  <div class="well well-sm" style="width: 25%;margin:auto;padding: 22px;margin-top: 22px;z-index: 6">
-    <p class="login-box-msg">Sign in to start your session</p>
-    <form action="" method="post">
-      <div class="form-group has-feedback">
-        <input type="email" name="email" class="form-control" placeholder="Email" required>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-    
-          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
-    </form>
-  </div>
-  <br>
-  <div class="alert alert-danger" id="error"  style="width: 25%;margin: auto;display: none;"></div>
-  <div style="position: fixed;;top:0;background: rgba(0,0,0,0.7); width: 100%;height: 100%;z-index: -1"></div>
+	// Check if user is already logged in
+	if(isset($_SESSION['loggedIn'])){
+		header('Location: index.php');
+		exit();
+	}
+	
+	require_once('inc/config/constants.php');
+	require_once('inc/config/db.php');
+	require_once('inc/header.html');
+?>
+  <body>
 
-  <!-- /.login-box-body -->
-</div>
-</body>
+<?php
+// Variable to store the action (login, register, passwordReset)
+$action = '';
+	if(isset($_GET['action'])){
+		$action = $_GET['action'];
+		if($action == 'register'){
+?>
+			<div class="container">
+			  <div class="row justify-content-center">
+			  <div class="col-sm-12 col-md-5 col-lg-5">
+				<div class="card">
+				  <div class="card-header">
+					Register
+				  </div>
+				  <div class="card-body">
+					<form action="">
+					<div id="registerMessage"></div>
+					  <div class="form-group">
+						<label for="registerFullName">Name<span class="requiredIcon">*</span></label>
+						<input type="text" class="form-control" id="registerFullName" name="registerFullName">
+						<!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+					  </div>
+					   <div class="form-group">
+						<label for="registerUsername">Username<span class="requiredIcon">*</span></label>
+						<input type="email" class="form-control" id="registerUsername" name="registerUsername" autocomplete="on">
+					  </div>
+					  <div class="form-group">
+						<label for="registerPassword1">Password<span class="requiredIcon">*</span></label>
+						<input type="password" class="form-control" id="registerPassword1" name="registerPassword1">
+					  </div>
+					  <div class="form-group">
+						<label for="registerPassword2">Re-enter password<span class="requiredIcon">*</span></label>
+						<input type="password" class="form-control" id="registerPassword2" name="registerPassword2">
+					  </div>
+					  <a href="login.php" class="btn btn-primary">Login</a>
+					  <button type="button" id="register" class="btn btn-success">Register</button>
+					  <a href="login.php?action=resetPassword" class="btn btn-warning">Reset Password</a>
+					  <button type="reset" class="btn">Clear</button>
+					</form>
+				  </div>
+				</div>
+				</div>
+			  </div>
+			</div>
+<?php
+			require 'inc/footer.php';
+			echo '</body></html>';
+			exit();
+		} elseif($action == 'resetPassword'){
+?>
+			<div class="container">
+			  <div class="row justify-content-center">
+			  <div class="col-sm-12 col-md-5 col-lg-5">
+				<div class="card">
+				  <div class="card-header">
+					Reset Password
+				  </div>
+				  <div class="card-body">
+					<form action="">
+					<div id="resetPasswordMessage"></div>
+					  <div class="form-group">
+						<label for="resetPasswordUsername">Username</label>
+						<input type="text" class="form-control" id="resetPasswordUsername" name="resetPasswordUsername">
+					  </div>
+					  <div class="form-group">
+						<label for="resetPasswordPassword1">New Password</label>
+						<input type="password" class="form-control" id="resetPasswordPassword1" name="resetPasswordPassword1">
+					  </div>
+					  <div class="form-group">
+						<label for="resetPasswordPassword2">Confirm New Password</label>
+						<input type="password" class="form-control" id="resetPasswordPassword2" name="resetPasswordPassword2">
+					  </div>
+					  <a href="login.php" class="btn btn-primary">Login</a>
+					  <a href="login.php?action=register" class="btn btn-success">Register</a>
+					  <button type="button" id="resetPasswordButton" class="btn btn-warning">Reset Password</button>
+					  <button type="reset" class="btn">Clear</button>
+					</form>
+				  </div>
+				</div>
+				</div>
+			  </div>
+			</div>
+<?php
+			require 'inc/footer.php';
+			echo '</body></html>';
+			exit();
+		}
+	}	
+?>
+	<!-- Default Page Content (login form) -->
+    <div class="container">
+      <div class="row justify-content-center">
+	  <div class="col-sm-12 col-md-5 col-lg-5">
+		<div class="card">
+		  <div class="card-header">
+			Login
+		  </div>
+		  <div class="card-body">
+			<form action="">
+			<div id="loginMessage"></div>
+			  <div class="form-group">
+				<label for="loginUsername">Username</label>
+				<input type="text" class="form-control" id="loginUsername" name="loginUsername">
+			  </div>
+			  <div class="form-group">
+				<label for="loginPassword">Password</label>
+				<input type="password" class="form-control" id="loginPassword" name="loginPassword">
+			  </div>
+			  <button type="button" id="login" class="btn btn-primary">Login</button>
+			  <a href="login.php?action=register" class="btn btn-success">Register</a>
+			  <a href="login.php?action=resetPassword" class="btn btn-warning">Reset Password</a>
+			  <button type="reset" class="btn">Clear</button>
+			</form>
+		  </div>
+		</div>
+		</div>
+      </div>
+    </div>
+<?php
+	require 'inc/footer.php';
+?>
+  </body>
 </html>
-
-<?php 
-
-if (isset($_POST['login'])) 
-{
-	$user = $_POST['email'];
-    $pass = $_POST['password'];
-    $con = new mysqli('localhost','root','','medical');
-
-    $result = $con->query("select * from users where email='$user' AND password='$pass'");
-    if($result->num_rows>0)
-    {	
-    	session_start();
-    	$data = $result->fetch_assoc();
-    	$_SESSION['userId']=$data['id'];
-      $_SESSION['bill'] = array();
-    	header('location:index.php');
-      }
-    else
-    {
-     	echo 
-     	"<script>
-     		\$(document).ready(function(){\$('#error').slideDown().html('Login Error! Try again.').delay(3000).fadeOut();});
-     	</script>
-     	";
-    }
-}
-
- ?>
