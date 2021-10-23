@@ -14,7 +14,7 @@
 						<th>Item Name</th>
 						<th>Discount %</th>
 						<th>Stock</th>
-						<th>Unit Price</th>
+						<th>Unit Price (RM)</th>
 						<th>Status</th>
 						<th>Description</th>
 					</tr>
