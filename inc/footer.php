@@ -1,7 +1,7 @@
     <!-- Footer -->
-    <footer class="footer bg-dark">
+    <footer class="footer bg-danger">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Inventory System <?php echo date('Y'); ?></p>
+        <p class="m-0 text-center text-white">People Health Pharmacy (PHP) Inc.</p>
       </div>
     </footer>
 

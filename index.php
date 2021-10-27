@@ -10,6 +10,15 @@
 	require_once('inc/config/db.php');
 	require_once('inc/header.html');
 ?>
+<head>
+	<style>
+		.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    	color: #fff;
+    	background-color: #F08080 ;
+		}
+	</style>
+</head>
+
 <body>
 
 <?php
