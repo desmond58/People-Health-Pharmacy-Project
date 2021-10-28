@@ -14,8 +14,18 @@
 	<style>
 		.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     	color: #fff;
-    	background-color:  #58181F ;
+    	background-color: #c7c7c7;
 		}
+
+		a:hover {
+            color: grey;
+        }
+
+        a{
+            color: black;
+        }
+
+		.button {background-color: #555555;}
 	</style>
 </head>
 
@@ -113,10 +123,10 @@
 												<div id="imageContainer"></div>
 											</div>
 										</div>
-										<button type="button" id="addItem" class="btn btn-success">Add Item</button>
-										<button type="button" id="updateItemDetailsButton" class="btn btn-primary">Update</button>
-										<button type="button" id="deleteItem" class="btn btn-danger">Delete</button>
-										<button type="reset" class="btn" id="itemClear">Clear</button>
+										<button type="button" id="addItem" class="btn" style="background-color: #241f20; color:white;" >Add Item</button>
+										<button type="button" id="updateItemDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
+										<button type="button" id="deleteItem" class="btn" style="background-color: red; color:white;">Delete</button>
+										<button type="reset" class="btn" id="itemClear" >Clear</button>
 									</form>
 								</div>
 								<div id="itemImageTab" class="container-fluid tab-pane fade">
@@ -145,8 +155,8 @@
 											</div>
 										</div>
 										<br>
-										<button type="button" id="updateImageButton" class="btn btn-primary">Upload Image</button>
-										<button type="button" id="deleteImageButton" class="btn btn-danger">Delete Image</button>
+										<button type="button" id="updateImageButton" class="btn" style="background-color: #241f20; color:white;" >Upload Image</button>
+										<button type="button" id="deleteImageButton" class="btn" style="background-color: red; color:white;">Delete Image</button>
 										<button type="reset" class="btn">Clear</button>
 									</form>
 								</div>
@@ -208,9 +218,9 @@
 										<input type="text" class="form-control" id="purchaseDetailsTotal" name="purchaseDetailsTotal" readonly>
 									</div>
 								</div>
-								<button type="button" id="addPurchase" class="btn btn-success">Add Purchase</button>
-								<button type="button" id="updatePurchaseDetailsButton" class="btn btn-primary">Update</button>
-								<button type="reset" class="btn">Clear</button>
+								<button type="button" id="addPurchase" class="btn" style="background-color: #241f20; color:white;" >Add Purchase</button>
+								<button type="button" id="updatePurchaseDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
+								<button type="reset" class="btn" >Clear</button>
 							</form>
 						</div> 
 					</div>
@@ -274,10 +284,11 @@
 										</select>
 									</div>
 								</div>					  
-								<button type="button" id="addVendor" name="addVendor" class="btn btn-success">Add Vendor</button>
-								<button type="button" id="updateVendorDetailsButton" class="btn btn-primary">Update</button>
-								<button type="button" id="deleteVendorButton" class="btn btn-danger">Delete</button>
-								<button type="reset" class="btn">Clear</button>
+								<button type="button" id="addVendor" name="addVendor" class="btn" style="background-color: #241f20; color:white;" >Add Vendor</button>
+								<button type="button" id="updateVendorDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
+								<button type="button" id="deleteVendorButton" class="btn btn-danger" 
+style="background-color: red; color:white;">Delete</button>
+								<button type="reset" class="btn" >Clear</button>
 							</form>
 						</div> 
 					</div>
@@ -352,9 +363,9 @@
 										<div id="saleDetailsImageContainer"></div>
 									</div>
 								</div>
-								<button type="button" id="addSaleButton" class="btn btn-success">Add Sale</button>
-								<button type="button" id="updateSaleDetailsButton" class="btn btn-primary">Update</button>
-								<button type="reset" id="saleClear" class="btn">Clear</button>
+								<button type="button" id="addSaleButton" class="btn" style="background-color: #241f20; color:white;" >Add Sale</button>
+								<button type="button" id="updateSaleDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
+								<button type="reset" id="saleClear" class="btn" >Clear</button>
 							</form>
 						</div> 
 					</div>
@@ -417,10 +428,10 @@
 										</select>
 									</div>
 								</div>					  
-								<button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>
-								<button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
-								<button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>
-								<button type="reset" class="btn">Clear</button>
+								<button type="button" id="addCustomer" name="addCustomer" class="btn" style="background-color: #241f20; color:white;" >Add Customer</button>
+								<button type="button" id="updateCustomerDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
+								<button type="button" id="deleteCustomerButton" class="btn" style="background-color: red; color:white;">Delete</button>
+								<button type="reset" class="btn" >Clear</button>
 							</form>
 						</div> 
 					</div>
@@ -529,7 +540,7 @@
 												<input type="text" class="form-control datepicker" id="saleReportEndDate" value="2018-05-24" name="saleReportEndDate" readonly>
 											</div>
 										</div>
-										<button type="button" id="showSaleReport" class="btn btn-dark">Show Report</button>
+										<button type="button" id="showSaleReport" class="btn" style="background-color: #241f20; color:white;" >Show Report</button>
 										<button type="reset" id="saleFilterClear" class="btn">Clear</button>
 									</form>
 									<br><br>
@@ -549,7 +560,7 @@
 												<input type="text" class="form-control datepicker" id="purchaseReportEndDate" value="2018-05-24" name="purchaseReportEndDate" readonly>
 											</div>
 										</div>
-										<button type="button" id="showPurchaseReport" class="btn btn-dark">Show Report</button>
+										<button type="button" id="showPurchaseReport" class="btn" style="background-color: #241f20; color:white;">Show Report</button>
 										<button type="reset" id="purchaseFilterClear" class="btn">Clear</button>
 									</form>
 									<br><br>

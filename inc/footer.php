@@ -1,5 +1,5 @@
     <!-- Footer -->
-    <footer class="footer bg-danger">
+    <footer class="footer" style="background-color: #0ABAB5">
       <div class="container">
         <p class="m-0 text-center text-white">People Health Pharmacy (PHP) Inc.</p>
       </div>
