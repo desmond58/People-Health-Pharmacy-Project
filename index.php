@@ -125,7 +125,7 @@
 										</div>
 										<button type="button" id="addItem" class="btn" style="background-color: #241f20; color:white;" >Add Item</button>
 										<button type="button" id="updateItemDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
-										<button type="button" id="deleteItem" class="btn" style="background-color: red; color:white;">Delete</button>
+										<button type="button" id="deleteItem" class="btn btn-danger" >Delete</button>
 										<button type="reset" class="btn" id="itemClear" >Clear</button>
 									</form>
 								</div>
@@ -156,7 +156,7 @@
 										</div>
 										<br>
 										<button type="button" id="updateImageButton" class="btn" style="background-color: #241f20; color:white;" >Upload Image</button>
-										<button type="button" id="deleteImageButton" class="btn" style="background-color: red; color:white;">Delete Image</button>
+										<button type="button" id="deleteImageButton" class="btn btn-danger" >Delete Image</button>
 										<button type="reset" class="btn">Clear</button>
 									</form>
 								</div>
@@ -286,8 +286,7 @@
 								</div>					  
 								<button type="button" id="addVendor" name="addVendor" class="btn" style="background-color: #241f20; color:white;" >Add Vendor</button>
 								<button type="button" id="updateVendorDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
-								<button type="button" id="deleteVendorButton" class="btn btn-danger" 
-style="background-color: red; color:white;">Delete</button>
+								<button type="button" id="deleteVendorButton" class="btn btn-danger" >Delete</button>
 								<button type="reset" class="btn" >Clear</button>
 							</form>
 						</div> 
@@ -430,7 +429,7 @@ style="background-color: red; color:white;">Delete</button>
 								</div>					  
 								<button type="button" id="addCustomer" name="addCustomer" class="btn" style="background-color: #241f20; color:white;" >Add Customer</button>
 								<button type="button" id="updateCustomerDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>
-								<button type="button" id="deleteCustomerButton" class="btn" style="background-color: red; color:white;">Delete</button>
+								<button type="button" id="deleteCustomerButton" class="btn btn-danger" >Delete</button>
 								<button type="reset" class="btn" >Clear</button>
 							</form>
 						</div> 
