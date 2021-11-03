@@ -17,8 +17,6 @@
 						<th>Item Number</th>
 						<th>Purchase Date</th>
 						<th>Item Name</th>
-						<th>Vendor Name</th>
-						<th>Vendor ID</th>
 						<th>Quantity</th>
 						<th>Unit Price</th>
 						<th>Total Price</th>
@@ -37,8 +35,6 @@
 						'<td>' . $row['itemNumber'] . '</td>' .
 						'<td>' . $row['purchaseDate'] . '</td>' .
 						'<td>' . $row['itemName'] . '</td>' .
-						'<td>' . $row['vendorName'] . '</td>' .
-						'<td>' . $row['vendorID'] . '</td>' .
 						'<td>' . $row['quantity'] . '</td>' .
 						'<td>' . $row['unitPrice'] . '</td>' .
 						'<td>' . $totalPrice . '</td>' .

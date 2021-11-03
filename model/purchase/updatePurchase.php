@@ -13,7 +13,6 @@
 		$purchaseDetailsQuantity = htmlentities($_POST['purchaseDetailsQuantity']);
 		$purchaseDetailsUnitPrice = htmlentities($_POST['purchaseDetailsUnitPrice']);
 		$purchaseDetailsPurchaseID = htmlentities($_POST['purchaseDetailsPurchaseID']);
-		$purchaseDetailsVendorName = htmlentities($_POST['purchaseDetailsVendorName']);
 		
 		$quantityInOriginalOrder = 0;
 		$quantityInNewOrder = 0;
@@ -68,12 +67,6 @@
 			$originalPurchaseQuantityStatement = $conn->prepare($orginalPurchaseQuantitySql);
 			$originalPurchaseQuantityStatement->execute(['purchaseID' => $purchaseDetailsPurchaseID]);
 			
-			// Get the vendorId for the given vendorName
-			$vendorIDsql = 'SELECT * FROM vendor WHERE fullName = :fullName';
-			$vendorIDStatement = $conn->prepare($vendorIDsql);
-			$vendorIDStatement->execute(['fullName' => $purchaseDetailsVendorName]);
-			$row = $vendorIDStatement->fetch(PDO::FETCH_ASSOC);
-			$vendorID = $row['vendorID'];
 			
 			if($originalPurchaseQuantityStatement->rowCount() > 0){
 				
@@ -128,9 +121,9 @@
 					$previousItemStockUpdateStatement->execute(['stock' => $previousItemNewStock, 'itemNumber' => $originalOrderItemNumber]);
 					
 					// Finally UPDATE the purchase table for new item
-					$updatePurchaseDetailsSql = 'UPDATE purchase SET itemNumber = :itemNumber, purchaseDate = :purchaseDate, itemName = :itemName, unitPrice = :unitPrice, quantity = :quantity, vendorName = :vendorName, vendorID = :vendorID WHERE purchaseID = :purchaseID';
+					$updatePurchaseDetailsSql = 'UPDATE purchase SET itemNumber = :itemNumber, purchaseDate = :purchaseDate, itemName = :itemName, unitPrice = :unitPrice, quantity = :quantity WHERE purchaseID = :purchaseID';
 					$updatePurchaseDetailsStatement = $conn->prepare($updatePurchaseDetailsSql);
-					$updatePurchaseDetailsStatement->execute(['itemNumber' => $purchaseDetailsItemNumber, 'purchaseDate' => $purchaseDetailsPurchaseDate, 'itemName' => $purchaseDetailsItemName, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity, 'vendorName' => $purchaseDetailsVendorName, 'vendorID' => $vendorID, 'purchaseID' => $purchaseDetailsPurchaseID]);
+					$updatePurchaseDetailsStatement->execute(['itemNumber' => $purchaseDetailsItemNumber, 'purchaseDate' => $purchaseDetailsPurchaseDate, 'itemName' => $purchaseDetailsItemName, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity, 'purchaseID' => $purchaseDetailsPurchaseID]);
 					
 					echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Purchase details added to database and stock values updated.</div>';
 					exit();
@@ -158,9 +151,9 @@
 						$updateStockStatement->execute(['stock' => $newStock, 'itemNumber' => $purchaseDetailsItemNumber]);
 						
 						// Next, update the purchase table
-						$updatePurchaseDetailsSql = 'UPDATE purchase SET purchaseDate = :purchaseDate, unitPrice = :unitPrice, quantity = :quantity, vendorName = :vendorName, vendorID = :vendorID WHERE purchaseID = :purchaseID';
+						$updatePurchaseDetailsSql = 'UPDATE purchase SET purchaseDate = :purchaseDate, unitPrice = :unitPrice, quantity = :quantity WHERE purchaseID = :purchaseID';
 						$updatePurchaseDetailsStatement = $conn->prepare($updatePurchaseDetailsSql);
-						$updatePurchaseDetailsStatement->execute(['purchaseDate' => $purchaseDetailsPurchaseDate, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity, 'vendorName' => $purchaseDetailsVendorName, 'vendorID' => $vendorID, 'purchaseID' => $purchaseDetailsPurchaseID]);
+						$updatePurchaseDetailsStatement->execute(['purchaseDate' => $purchaseDetailsPurchaseDate, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity, 'purchaseID' => $purchaseDetailsPurchaseID]);
 						
 						echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Purchase details added to database and stock values updated.</div>';
 						exit();

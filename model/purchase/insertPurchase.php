@@ -9,7 +9,6 @@
 		$purchaseDetailsItemName = htmlentities($_POST['purchaseDetailsItemName']);
 		$purchaseDetailsQuantity = htmlentities($_POST['purchaseDetailsQuantity']);
 		$purchaseDetailsUnitPrice = htmlentities($_POST['purchaseDetailsUnitPrice']);
-		$purchaseDetailsVendorName = htmlentities($_POST['purchaseDetailsVendorName']);
 		
 		$initialStock = 0;
 		$newStock = 0;
@@ -69,17 +68,11 @@
 			$stockStatement->execute(['itemNumber' => $purchaseDetailsItemNumber]);
 			if($stockStatement->rowCount() > 0){
 				
-				// Get the vendorId for the given vendorName
-				$vendorIDsql = 'SELECT * FROM vendor WHERE fullName = :fullName';
-				$vendorIDStatement = $conn->prepare($vendorIDsql);
-				$vendorIDStatement->execute(['fullName' => $purchaseDetailsVendorName]);
-				$row = $vendorIDStatement->fetch(PDO::FETCH_ASSOC);
-				$vendorID = $row['vendorID'];
 				
 				// Item exits in the item table, therefore, start the inserting data to purchase table
-				$insertPurchaseSql = 'INSERT INTO purchase(itemNumber, purchaseDate, itemName, unitPrice, quantity, vendorName, vendorID) VALUES(:itemNumber, :purchaseDate, :itemName, :unitPrice, :quantity, :vendorName, :vendorID)';
+				$insertPurchaseSql = 'INSERT INTO purchase(itemNumber, purchaseDate, itemName, unitPrice, quantity) VALUES(:itemNumber, :purchaseDate, :itemName, :unitPrice, :quantity)';
 				$insertPurchaseStatement = $conn->prepare($insertPurchaseSql);
-				$insertPurchaseStatement->execute(['itemNumber' => $purchaseDetailsItemNumber, 'purchaseDate' => $purchaseDetailsPurchaseDate, 'itemName' => $purchaseDetailsItemName, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity, 'vendorName' => $purchaseDetailsVendorName, 'vendorID' => $vendorID]);
+				$insertPurchaseStatement->execute(['itemNumber' => $purchaseDetailsItemNumber, 'purchaseDate' => $purchaseDetailsPurchaseDate, 'itemName' => $purchaseDetailsItemName, 'unitPrice' => $purchaseDetailsUnitPrice, 'quantity' => $purchaseDetailsQuantity]);
 				
 				// Calculate the new stock value using the existing stock in item table
 				$row = $stockStatement->fetch(PDO::FETCH_ASSOC);

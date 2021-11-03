@@ -7,9 +7,6 @@ customerDetailsSearchTableCreatorFile = 'model/customer/customerDetailsSearchTab
 // File that creates the item details search table
 itemDetailsSearchTableCreatorFile = 'model/item/itemDetailsSearchTableCreator.php';
 
-// File that creates the vendor details search table
-vendorDetailsSearchTableCreatorFile = 'model/vendor/vendorDetailsSearchTableCreator.php';
-
 // File that creates the sale details search table
 saleDetailsSearchTableCreatorFile = 'model/sale/saleDetailsSearchTableCreator.php';
 
@@ -24,16 +21,10 @@ customerReportsSearchTableCreatorFile = 'model/customer/customerReportsSearchTab
 // File that creates the item reports search table
 itemReportsSearchTableCreatorFile = 'model/item/itemReportsSearchTableCreator.php';
 
-// File that creates the vendor reports search table
-vendorReportsSearchTableCreatorFile = 'model/vendor/vendorReportsSearchTableCreator.php';
-
 // File that creates the sale reports search table
 saleReportsSearchTableCreatorFile = 'model/sale/saleReportsSearchTableCreator.php';
 
 
-
-// File that returns the last inserted vendorID
-vendorLastInsertedIDFile = 'model/vendor/populateLastVendorID.php';
 
 // File that returns the last inserted customerID
 customerLastInsertedIDFile = 'model/customer/populateLastCustomerID.php';
@@ -54,9 +45,6 @@ showPurchaseIDSuggestionsFile = 'model/purchase/showPurchaseIDs.php';
 
 // File that returns saleIDs
 showSaleIDSuggestionsFile = 'model/sale/showSaleIDs.php';
-
-// File that returns vendorIDs
-showVendorIDSuggestionsFile = 'model/vendor/showVendorIDs.php';
 
 // File that returns customerIDs
 showCustomerIDSuggestionsFile = 'model/customer/showCustomerIDs.php';
@@ -118,11 +106,6 @@ $(document).ready(function(){
 		addCustomer();
 	});
 	
-	// Listen to vendor add button
-	$('#addVendor').on('click', function(){
-		addVendor();
-	});
-	
 	// Listen to item add button
 	$('#addItem').on('click', function(){
 		addItem();
@@ -147,12 +130,7 @@ $(document).ready(function(){
 	$('#updateCustomerDetailsButton').on('click', function(){
 		updateCustomer();
 	});
-	
-	// Listen to update button in vendor details tab
-	$('#updateVendorDetailsButton').on('click', function(){
-		updateVendor();
-	});
-	
+		
 	// Listen to update button in purchase details tab
 	$('#updatePurchaseDetailsButton').on('click', function(){
 		updatePurchase();
@@ -179,16 +157,6 @@ $(document).ready(function(){
 		bootbox.confirm('Are you sure you want to delete?', function(result){
 			if(result){
 				deleteCustomer();
-			}
-		});
-	});
-	
-	// Listen to delete button in vendor details tab
-	$('#deleteVendorButton').on('click', function(){
-		// Confirm before deleting
-		bootbox.confirm('Are you sure you want to delete?', function(result){
-			if(result){
-				deleteVendor();
 			}
 		});
 	});
@@ -312,20 +280,7 @@ $(document).ready(function(){
 		getCustomerDetailsToPopulateSaleTab();
 	});
 	
-	
-	// Listen to VendorID text box in vendor details tab
-	$('#vendorDetailsVendorID').keyup(function(){
-		showSuggestions('vendorDetailsVendorID', showVendorIDSuggestionsFile, 'vendorDetailsVendorIDSuggestionsDiv');
-	});
-	
-	// Remove the VendorID suggestions dropdown in the vendor details tab
-	// when user selects an item from it
-	$(document).on('click', '#vendorDetailsVendorIDSuggestionsList li', function(){
-		$('#vendorDetailsVendorID').val($(this).text());
-		$('#vendorDetailsVendorIDSuggestionsList').fadeOut();
-		getVendorDetailsToPopulate();
-	});
-	
+		
 	
 	// Listen to PurchaseID text box in purchase details tab
 	$('#purchaseDetailsPurchaseID').keyup(function(){
@@ -388,19 +343,17 @@ $(document).ready(function(){
 		$('.suggestionsList').fadeOut();
 	});
 
-	// Load searchable datatables for customer, purchase, item, vendor, sale
+	// Load searchable datatables for customer, purchase, item, sale
 	searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 	searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
 	searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 	searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
-	searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 	
-	// Load searchable datatables for customer, purchase, item, vendor, sale reports
+	// Load searchable datatables for customer, purchase, item,  sale reports
 	reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 	reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
 	reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
 	reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
-	reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
 	
 	// Initiate popovers
 	$(document).on('mouseover', '.itemDetailsHover', function(){
@@ -420,13 +373,11 @@ $(document).ready(function(){
 		searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 		searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
 		searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
-		searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 		searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
 		
 		reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 		reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
 		reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
-		reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
 		reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 	});
 	
@@ -929,45 +880,6 @@ function addCustomer() {
 }
 
 
-// Function to call the insertVendor.php script to insert vendor data to db
-function addVendor() {
-	var vendorDetailsVendorFullName = $('#vendorDetailsVendorFullName').val();
-	var vendorDetailsVendorEmail = $('#vendorDetailsVendorEmail').val();
-	var vendorDetailsVendorMobile = $('#vendorDetailsVendorMobile').val();
-	var vendorDetailsVendorPhone2 = $('#vendorDetailsVendorPhone2').val();
-	var vendorDetailsVendorAddress = $('#vendorDetailsVendorAddress').val();
-	var vendorDetailsVendorAddress2 = $('#vendorDetailsVendorAddress2').val();
-	var vendorDetailsVendorCity = $('#vendorDetailsVendorCity').val();
-	var vendorDetailsVendorDistrict = $('#vendorDetailsVendorDistrict option:selected').text();
-	var vendorDetailsStatus = $('#vendorDetailsStatus option:selected').text();
-	
-	$.ajax({
-		url: 'model/vendor/insertVendor.php',
-		method: 'POST',
-		data: {
-			vendorDetailsVendorFullName:vendorDetailsVendorFullName,
-			vendorDetailsVendorEmail:vendorDetailsVendorEmail,
-			vendorDetailsVendorMobile:vendorDetailsVendorMobile,
-			vendorDetailsVendorPhone2:vendorDetailsVendorPhone2,
-			vendorDetailsVendorAddress:vendorDetailsVendorAddress,
-			vendorDetailsVendorAddress2:vendorDetailsVendorAddress2,
-			vendorDetailsVendorCity:vendorDetailsVendorCity,
-			vendorDetailsVendorDistrict:vendorDetailsVendorDistrict,
-			vendorDetailsStatus:vendorDetailsStatus,
-		},
-		success: function(data){
-			$('#vendorDetailsMessage').fadeIn();
-			$('#vendorDetailsMessage').html(data);
-		},
-		complete: function(data){
-			populateLastInsertedID(vendorLastInsertedIDFile, 'vendorDetailsVendorID');
-			searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
-			reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
-			$('#purchaseDetailsVendorName').load('model/vendor/getVendorNames.php');
-		}
-	});
-}
-
 
 // Function to call the insertItem.php script to insert item data to db
 function addItem() {
@@ -1012,7 +924,6 @@ function addPurchase() {
 	var purchaseDetailsItemName = $('#purchaseDetailsItemName').val();
 	var purchaseDetailsQuantity = $('#purchaseDetailsQuantity').val();
 	var purchaseDetailsUnitPrice = $('#purchaseDetailsUnitPrice').val();
-	var purchaseDetailsVendorName = $('#purchaseDetailsVendorName').val();
 	
 	$.ajax({
 		url: 'model/purchase/insertPurchase.php',
@@ -1023,7 +934,6 @@ function addPurchase() {
 			purchaseDetailsItemName:purchaseDetailsItemName,
 			purchaseDetailsQuantity:purchaseDetailsQuantity,
 			purchaseDetailsUnitPrice:purchaseDetailsUnitPrice,
-			purchaseDetailsVendorName:purchaseDetailsVendorName,
 		},
 		success: function(data){
 			$('#purchaseDetailsMessage').fadeIn();
@@ -1285,30 +1195,6 @@ function deleteCustomer(){
 }
 
 
-// Function to delete vendor from db
-function deleteVendor(){
-	// Get the vendorID entered by the user
-	var vendorDetailsVendorID = $('#vendorDetailsVendorID').val();
-	
-	// Call the deleteVendor.php script only if there is a value in the
-	// vendor ID textbox
-	if(vendorDetailsVendorID != ''){
-		$.ajax({
-			url: 'model/vendor/deleteVendor.php',
-			method: 'POST',
-			data: {vendorDetailsVendorID:vendorDetailsVendorID},
-			success: function(data){
-				$('#vendorDetailsMessage').fadeIn();
-				$('#vendorDetailsMessage').html(data);
-			},
-			complete: function(){
-				searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
-				reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
-			}
-		});
-	}
-}
-
 
 // Function to send customerID so that customer details can be pulled from db
 // to be displayed on customer details tab
@@ -1360,33 +1246,6 @@ function getCustomerDetailsToPopulateSaleTab(){
 }
 
 
-// Function to send vendorID so that vendor details can be pulled from db
-// to be displayed on vendor details tab
-function getVendorDetailsToPopulate(){
-	// Get the vendorID entered in the text box
-	var vendorDetailsVendorID = $('#vendorDetailsVendorID').val();
-	
-	// Call the populateVendorDetails.php script to get vendor details
-	// relevant to the vendorID which the user entered
-	$.ajax({
-		url: 'model/vendor/populateVendorDetails.php',
-		method: 'POST',
-		data: {vendorDetailsVendorID:vendorDetailsVendorID},
-		dataType: 'json',
-		success: function(data){
-			//$('#vendorDetailsVendorID').val(data.vendorID);
-			$('#vendorDetailsVendorFullName').val(data.fullName);
-			$('#vendorDetailsVendorMobile').val(data.mobile);
-			$('#vendorDetailsVendorPhone2').val(data.phone2);
-			$('#vendorDetailsVendorEmail').val(data.email);
-			$('#vendorDetailsVendorAddress').val(data.address);
-			$('#vendorDetailsVendorAddress2').val(data.address2);
-			$('#vendorDetailsVendorCity').val(data.city);
-			$('#vendorDetailsVendorDistrict').val(data.district).trigger("chosen:updated");
-			$('#vendorDetailsStatus').val(data.status).trigger("chosen:updated");
-		}
-	});
-}
 
 
 // Function to send purchaseID so that purchase details can be pulled from db
@@ -1409,7 +1268,6 @@ function getPurchaseDetailsToPopulate(){
 			$('#purchaseDetailsItemName').val(data.itemName);
 			$('#purchaseDetailsQuantity').val(data.quantity);
 			$('#purchaseDetailsUnitPrice').val(data.unitPrice);
-			$('#purchaseDetailsVendorName').val(data.vendorName).trigger("chosen:updated");
 		},
 		complete: function(){
 			calculateTotalInPurchaseTab();
@@ -1535,47 +1393,6 @@ function updateCustomer() {
 }
 
 
-// Function to call the upateVendorDetails.php script to UPDATE vendor data in db
-function updateVendor() {
-	var vendorDetailsVendorID = $('#vendorDetailsVendorID').val();
-	var vendorDetailsVendorFullName = $('#vendorDetailsVendorFullName').val();
-	var vendorDetailsVendorMobile = $('#vendorDetailsVendorMobile').val();
-	var vendorDetailsVendorPhone2 = $('#vendorDetailsVendorPhone2').val();
-	var vendorDetailsVendorAddress = $('#vendorDetailsVendorAddress').val();
-	var vendorDetailsVendorEmail = $('#vendorDetailsVendorEmail').val();
-	var vendorDetailsVendorAddress2 = $('#vendorDetailsVendorAddress2').val();
-	var vendorDetailsVendorCity = $('#vendorDetailsVendorCity').val();
-	var vendorDetailsVendorDistrict = $('#vendorDetailsVendorDistrict').val();
-	var vendorDetailsStatus = $('#vendorDetailsStatus option:selected').text();
-	
-	$.ajax({
-		url: 'model/vendor/updateVendorDetails.php',
-		method: 'POST',
-		data: {
-			vendorDetailsVendorID:vendorDetailsVendorID,
-			vendorDetailsVendorFullName:vendorDetailsVendorFullName,
-			vendorDetailsVendorMobile:vendorDetailsVendorMobile,
-			vendorDetailsVendorPhone2:vendorDetailsVendorPhone2,
-			vendorDetailsVendorAddress:vendorDetailsVendorAddress,
-			vendorDetailsVendorEmail:vendorDetailsVendorEmail,
-			vendorDetailsVendorAddress2:vendorDetailsVendorAddress2,
-			vendorDetailsVendorCity:vendorDetailsVendorCity,
-			vendorDetailsVendorDistrict:vendorDetailsVendorDistrict,
-			vendorDetailsStatus:vendorDetailsStatus,
-		},
-		success: function(data){
-			$('#vendorDetailsMessage').fadeIn();
-			$('#vendorDetailsMessage').html(data);
-		},
-		complete: function(){
-			searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
-			searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
-			reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
-			reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
-		}
-	});
-}
-
 
 // Function to call the updatePurchase.php script to update purchase data to db
 function updatePurchase() {
@@ -1585,7 +1402,6 @@ function updatePurchase() {
 	var purchaseDetailsQuantity = $('#purchaseDetailsQuantity').val();
 	var purchaseDetailsUnitPrice = $('#purchaseDetailsUnitPrice').val();
 	var purchaseDetailsPurchaseID = $('#purchaseDetailsPurchaseID').val();
-	var purchaseDetailsVendorName = $('#purchaseDetailsVendorName').val();
 	
 	$.ajax({
 		url: 'model/purchase/updatePurchase.php',
@@ -1597,7 +1413,6 @@ function updatePurchase() {
 			purchaseDetailsQuantity:purchaseDetailsQuantity,
 			purchaseDetailsUnitPrice:purchaseDetailsUnitPrice,
 			purchaseDetailsPurchaseID:purchaseDetailsPurchaseID,
-			purchaseDetailsVendorName:purchaseDetailsVendorName,
 		},
 		success: function(data){
 			$('#purchaseDetailsMessage').fadeIn();

@@ -19,8 +19,6 @@
 						<th>Item Name</th>
 						<th>Unit Price</th>
 						<th>Quantity</th>
-						<th>Vendor Name</th>
-						<th>Vendor ID</th>
 						<th>Total Price</th>
 					</tr>
 				</thead>
@@ -39,8 +37,6 @@
 						'<td>' . $row['itemName'] . '</td>' .
 						'<td>' . $row['unitPrice'] . '</td>' .
 						'<td>' . $row['quantity'] . '</td>' .
-						'<td>' . $row['vendorName'] . '</td>' .
-						'<td>' . $row['vendorID'] . '</td>' .
 						'<td>' . $totalPrice . '</td>' .
 					'</tr>';
 	}
@@ -56,8 +52,6 @@
 							<th>Item Name</th>
 							<th>Unit Price</th>
 							<th>Quantity</th>
-							<th>Vendor Name</th>
-							<th>Vendor ID</th>
 							<th>Total Price</th>
 						</tr>
 					</tfoot>
