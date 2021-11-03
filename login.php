@@ -47,9 +47,9 @@ $action = '';
 						<label for="registerPassword2">Re-enter password<span class="requiredIcon">*</span></label>
 						<input type="password" class="form-control" id="registerPassword2" name="registerPassword2">
 					  </div>
-					  <a href="login.php" class="btn btn-primary">Login</a>
-					  <button type="button" id="register" class="btn btn-success">Register</button>
-					  <a href="login.php?action=resetPassword" class="btn btn-warning">Reset Password</a>
+					  <a href="login.php" class="btn" style="background-color: #241f20; color:white">Login</a>
+					  <button type="button" id="register" class="btn" style="background-color: #241f20; color:white">Register</button>
+					  <a href="login.php?action=resetPassword" class="btn btn-danger">Reset Password</a>
 					  <button type="reset" class="btn">Clear</button>
 					</form>
 				  </div>
@@ -85,9 +85,9 @@ $action = '';
 						<label for="resetPasswordPassword2">Confirm New Password</label>
 						<input type="password" class="form-control" id="resetPasswordPassword2" name="resetPasswordPassword2">
 					  </div>
-					  <a href="login.php" class="btn btn-primary">Login</a>
-					  <a href="login.php?action=register" class="btn btn-success">Register</a>
-					  <button type="button" id="resetPasswordButton" class="btn btn-warning">Reset Password</button>
+					  <a href="login.php" class="btn btn-primary" >Login</a>
+					  <a href="login.php?action=register" class="btn btn-success" >Register</a>
+					  <button type="button" id="resetPasswordButton" class="btn btn-warning" >Reset Password</button>
 					  <button type="reset" class="btn">Clear</button>
 					</form>
 				  </div>
@@ -121,9 +121,9 @@ $action = '';
 				<label for="loginPassword">Password</label>
 				<input type="password" class="form-control" id="loginPassword" name="loginPassword">
 			  </div>
-			  <button type="button" id="login" class="btn btn-primary">Login</button>
-			  <a href="login.php?action=register" class="btn btn-success">Register</a>
-			  <a href="login.php?action=resetPassword" class="btn btn-warning">Reset Password</a>
+			  <button type="button" id="login" class="btn" style="background-color: #241f20; color:white">Login</button>
+			  <a href="login.php?action=register" class="btn" style="background-color: #241f20; color:white">Register</a>
+			  <a href="login.php?action=resetPassword" class="btn btn-danger">Reset Password</a>
 			  <button type="reset" class="btn">Clear</button>
 			</form>
 		  </div>
