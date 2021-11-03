@@ -837,7 +837,7 @@ function calculateTotalInSaleTab(){
 	var quantityST = $('#saleDetailsQuantity').val();
 	var unitPriceST = $('#saleDetailsUnitPrice').val();
 	var discountST = $('#saleDetailsDiscount').val();
-	$('#saleDetailsTotal').val(Number(unitPriceST) * ((100 - Number(discountST)) / 100) * Number(quantityST));
+	$('#saleDetailsTotal').val(Number(unitPriceST) * Number(quantityST));
 }
 
 
@@ -850,8 +850,6 @@ function addCustomer() {
 	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
 	var customerDetailsCustomerAddress2 = $('#customerDetailsCustomerAddress2').val();
 	var customerDetailsCustomerCity = $('#customerDetailsCustomerCity').val();
-	var customerDetailsCustomerDistrict = $('#customerDetailsCustomerDistrict option:selected').text();
-	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
 	
 	$.ajax({
 		url: 'model/customer/insertCustomer.php',
@@ -864,8 +862,6 @@ function addCustomer() {
 			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
 			customerDetailsCustomerAddress2:customerDetailsCustomerAddress2,
 			customerDetailsCustomerCity:customerDetailsCustomerCity,
-			customerDetailsCustomerDistrict:customerDetailsCustomerDistrict,
-			customerDetailsStatus:customerDetailsStatus,
 		},
 		success: function(data){
 			$('#customerDetailsMessage').fadeIn();
@@ -888,7 +884,6 @@ function addItem() {
 	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
-	var itemDetailsStatus = $('#itemDetailsStatus').val();
 	var itemDetailsDescription = $('#itemDetailsDescription').val();
 	
 	$.ajax({
@@ -900,7 +895,6 @@ function addItem() {
 			itemDetailsDiscount:itemDetailsDiscount,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
-			itemDetailsStatus:itemDetailsStatus,
 			itemDetailsDescription:itemDetailsDescription,
 		},
 		success: function(data){
@@ -1014,7 +1008,6 @@ function getItemDetailsToPopulate(){
 			$('#itemDetailsTotalStock').val(data.stock);
 			$('#itemDetailsUnitPrice').val(data.unitPrice);
 			$('#itemDetailsDescription').val(data.description);
-			$('#itemDetailsStatus').val(data.status).trigger("chosen:updated");
 
 			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 			
@@ -1218,8 +1211,6 @@ function getCustomerDetailsToPopulate(){
 			$('#customerDetailsCustomerAddress').val(data.address);
 			$('#customerDetailsCustomerAddress2').val(data.address2);
 			$('#customerDetailsCustomerCity').val(data.city);
-			$('#customerDetailsCustomerDistrict').val(data.district).trigger("chosen:updated");
-			$('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
 		}
 	});
 }
@@ -1316,7 +1307,6 @@ function updateItem() {
 	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
-	var itemDetailsStatus = $('#itemDetailsStatus').val();
 	var itemDetailsDescription = $('#itemDetailsDescription').val();
 	
 	$.ajax({
@@ -1328,7 +1318,6 @@ function updateItem() {
 			itemDetailsDiscount:itemDetailsDiscount,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
-			itemDetailsStatus:itemDetailsStatus,
 			itemDetailsDescription:itemDetailsDescription,
 		},
 		success: function(data){
@@ -1361,8 +1350,6 @@ function updateCustomer() {
 	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
 	var customerDetailsCustomerAddress2 = $('#customerDetailsCustomerAddress2').val();
 	var customerDetailsCustomerCity = $('#customerDetailsCustomerCity').val();
-	var customerDetailsCustomerDistrict = $('#customerDetailsCustomerDistrict').val();
-	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
 	
 	$.ajax({
 		url: 'model/customer/updateCustomerDetails.php',
@@ -1376,8 +1363,6 @@ function updateCustomer() {
 			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
 			customerDetailsCustomerAddress2:customerDetailsCustomerAddress2,
 			customerDetailsCustomerCity:customerDetailsCustomerCity,
-			customerDetailsCustomerDistrict:customerDetailsCustomerDistrict,
-			customerDetailsStatus:customerDetailsStatus,
 		},
 		success: function(data){
 			$('#customerDetailsMessage').fadeIn();

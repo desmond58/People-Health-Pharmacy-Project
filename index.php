@@ -88,12 +88,7 @@
 												<input type="text" class="form-control" name="itemDetailsItemName" id="itemDetailsItemName" autocomplete="off">
 												<div id="itemDetailsItemNameSuggestionsDiv" class="customListDivWidth"></div>
 											</div>
-											<div class="form-group col-md-2">
-												<label for="itemDetailsStatus">Status</label>
-												<select id="itemDetailsStatus" name="itemDetailsStatus" class="form-control chosenSelect">
-												<?php include('inc/statusList.html'); ?>
-												</select>
-											</div>
+											
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6" style="display:inline-block">
@@ -102,10 +97,6 @@
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="form-group col-md-3">
-												<label for="itemDetailsDiscount">Discount %</label>
-												<input type="text" class="form-control" value="0" name="itemDetailsDiscount" id="itemDetailsDiscount">
-											</div>
 											<div class="form-group col-md-3">
 												<label for="itemDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
 												<input type="number" class="form-control" value="0" name="itemDetailsQuantity" id="itemDetailsQuantity">
@@ -268,10 +259,6 @@
 										<input type="text" class="form-control" name="saleDetailsTotalStock" id="saleDetailsTotalStock" readonly>
 									</div>
 									<div class="form-group col-md-2">
-										<label for="saleDetailsDiscount">Discount %</label>
-										<input type="text" class="form-control" id="saleDetailsDiscount" name="saleDetailsDiscount" value="0">
-									</div>
-									<div class="form-group col-md-2">
 										<label for="saleDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
 										<input type="number" class="form-control" id="saleDetailsQuantity" name="saleDetailsQuantity" value="0">
 									</div>
@@ -308,12 +295,7 @@
 										<label for="customerDetailsCustomerFullName">Full Name<span class="requiredIcon">*</span></label>
 										<input type="text" class="form-control" id="customerDetailsCustomerFullName" name="customerDetailsCustomerFullName">
 									</div>
-									<div class="form-group col-md-2">
-										<label for="customerDetailsStatus">Status</label>
-										<select id="customerDetailsStatus" name="customerDetailsStatus" class="form-control chosenSelect">
-											<?php include('inc/statusList.html'); ?>
-										</select>
-									</div>
+									
 										<div class="form-group col-md-3">
 										<label for="customerDetailsCustomerID">Customer ID</label>
 										<input type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
@@ -347,12 +329,7 @@
 										<label for="customerDetailsCustomerCity">City</label>
 										<input type="text" class="form-control" id="customerDetailsCustomerCity" name="customerDetailsCustomerCity">
 									</div>
-									<div class="form-group col-md-4">
-										<label for="customerDetailsCustomerDistrict">District</label>
-										<select id="customerDetailsCustomerDistrict" name="customerDetailsCustomerDistrict" class="form-control chosenSelect">
-											<?php include('inc/districtList.html'); ?>
-										</select>
-									</div>
+									
 								</div>					  
 								<button type="button" id="addCustomer" name="addCustomer" class="btn" style="background-color: #241f20; color:white;" >Add Customer</button>
 								<button type="button" id="updateCustomerDetailsButton" class="btn" style="background-color: #241f20; color:white;">Update</button>

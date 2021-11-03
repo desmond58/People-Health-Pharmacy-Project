@@ -12,10 +12,8 @@
 						<th>Product ID</th>
 						<th>Item Number</th>
 						<th>Item Name</th>
-						<th>Discount %</th>
 						<th>Stock</th>
 						<th>Unit Price</th>
-						<th>Status</th>
 						<th>Description</th>
 					</tr>
 				</thead>
@@ -28,10 +26,8 @@
 						'<td>' . $row['itemNumber'] . '</td>' .
 						//'<td>' . $row['itemName'] . '</td>' .
 						'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['productID'] . '">' . $row['itemName'] . '</a></td>' .
-						'<td>' . $row['discount'] . '</td>' .
 						'<td>' . $row['stock'] . '</td>' .
 						'<td>' . $row['unitPrice'] . '</td>' .
-						'<td>' . $row['status'] . '</td>' .
 						'<td>' . $row['description'] . '</td>' .
 					'</tr>';
 	}
@@ -44,10 +40,8 @@
 							<th>Product ID</th>
 							<th>Item Number</th>
 							<th>Item Name</th>
-							<th>Discount %</th>
 							<th>Stock</th>
 							<th>Unit Price</th>
-							<th>Status</th>
 							<th>Description</th>
 						</tr>
 					</tfoot>

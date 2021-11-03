@@ -23,7 +23,6 @@
 							<th>Customer Name</th>
 							<th>Item Name</th>
 							<th>Sale Date</th>
-							<th>Discount %</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Total Price</th>
@@ -35,8 +34,7 @@
 		while($row = $saleFilteredReportStatement->fetch(PDO::FETCH_ASSOC)){
 			$uPrice = $row['unitPrice'];
 			$qty = $row['quantity'];
-			$discount = $row['discount'];
-			$totalPrice = $uPrice * $qty * ((100 - $discount)/100);
+			$totalPrice = $uPrice * $qty;
 		
 			$output .= '<tr>' .
 							'<td>' . $row['saleID'] . '</td>' .
@@ -45,7 +43,6 @@
 							'<td>' . $row['customerName'] . '</td>' .
 							'<td>' . $row['itemName'] . '</td>' .
 							'<td>' . $row['saleDate'] . '</td>' .
-							'<td>' . $row['discount'] . '</td>' .
 							'<td>' . $row['quantity'] . '</td>' .
 							'<td>' . $row['unitPrice'] . '</td>' .
 							'<td>' . $totalPrice . '</td>' .

@@ -17,8 +17,6 @@
 						<th>Address</th>
 						<th>Address 2</th>
 						<th>City</th>
-						<th>District</th>
-						<th>Status</th>
 					</tr>
 				</thead>
 				<tbody>';
@@ -34,8 +32,6 @@
 						'<td>' . $row['address'] . '</td>' .
 						'<td>' . $row['address2'] . '</td>' .
 						'<td>' . $row['city'] . '</td>' .
-						'<td>' . $row['district'] . '</td>' .
-						'<td>' . $row['status'] . '</td>' .
 					'</tr>';
 	}
 	
@@ -52,8 +48,6 @@
 							<th>Address</th>
 							<th>Address 2</th>
 							<th>City</th>
-							<th>District</th>
-							<th>Status</th>
 						</tr>
 					</tfoot>
 				</table>';

@@ -11,8 +11,6 @@
 		$address = htmlentities($_POST['customerDetailsCustomerAddress']);
 		$address2 = htmlentities($_POST['customerDetailsCustomerAddress2']);
 		$city = htmlentities($_POST['customerDetailsCustomerCity']);
-		$district = htmlentities($_POST['customerDetailsCustomerDistrict']);
-		$status = htmlentities($_POST['customerDetailsStatus']);
 		
 		if(isset($fullName) && isset($mobile) && isset($address)) {
 			// Validate mobile number
@@ -57,9 +55,9 @@
 			}
 			
 			// Start the insert process
-			$sql = 'INSERT INTO customer(fullName, email, mobile, phone2, address, address2, city, district, status) VALUES(:fullName, :email, :mobile, :phone2, :address, :address2, :city, :district, :status)';
+			$sql = 'INSERT INTO customer(fullName, email, mobile, phone2, address, address2, city) VALUES(:fullName, :email, :mobile, :phone2, :address, :address2, :city)';
 			$stmt = $conn->prepare($sql);
-			$stmt->execute(['fullName' => $fullName, 'email' => $email, 'mobile' => $mobile, 'phone2' => $phone2, 'address' => $address, 'address2' => $address2, 'city' => $city, 'district' => $district, 'status' => $status]);
+			$stmt->execute(['fullName' => $fullName, 'email' => $email, 'mobile' => $mobile, 'phone2' => $phone2, 'address' => $address, 'address2' => $address2, 'city' => $city]);
 			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer added to database</div>';
 		} else {
 			// One or more fields are empty

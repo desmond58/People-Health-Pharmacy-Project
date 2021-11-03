@@ -13,8 +13,6 @@
 		$customerDetailsCustomerAddress = htmlentities($_POST['customerDetailsCustomerAddress']);
 		$customerDetailsCustomerAddress2 = htmlentities($_POST['customerDetailsCustomerAddress2']);
 		$customerDetailsCustomerCity = htmlentities($_POST['customerDetailsCustomerCity']);
-		$customerDetailsCustomerDistrict = htmlentities($_POST['customerDetailsCustomerDistrict']);
-		$customerDetailsStatus = htmlentities($_POST['customerDetailsStatus']);
 		
 		// Check if mandatory fields are not empty
 		if(isset($customerDetailsCustomerFullName) && isset($customerDetailsCustomerMobile) && isset($customerDetailsCustomerAddress)) {
@@ -64,9 +62,9 @@
 				
 				// CustomerID is available in DB. Therefore, we can go ahead and UPDATE its details
 				// Construct the UPDATE query
-				$updateCustomerDetailsSql = 'UPDATE customer SET fullName = :fullName, email = :email, mobile = :mobile, phone2 = :phone2, address = :address, address2 = :address2, city = :city, district = :district, status = :status WHERE customerID = :customerID';
+				$updateCustomerDetailsSql = 'UPDATE customer SET fullName = :fullName, email = :email, mobile = :mobile, phone2 = :phone2, address = :address, address2 = :address2, city = :city WHERE customerID = :customerID';
 				$updateCustomerDetailsStatement = $conn->prepare($updateCustomerDetailsSql);
-				$updateCustomerDetailsStatement->execute(['fullName' => $customerDetailsCustomerFullName, 'email' => $customerDetailsCustomerEmail, 'mobile' => $customerDetailsCustomerMobile, 'phone2' => $customerDetailsCustomerPhone2, 'address' => $customerDetailsCustomerAddress, 'address2' => $customerDetailsCustomerAddress2, 'city' => $customerDetailsCustomerCity, 'district' => $customerDetailsCustomerDistrict, 'status' => $customerDetailsStatus, 'customerID' => $customerDetailsCustomerID]);
+				$updateCustomerDetailsStatement->execute(['fullName' => $customerDetailsCustomerFullName, 'email' => $customerDetailsCustomerEmail, 'mobile' => $customerDetailsCustomerMobile, 'phone2' => $customerDetailsCustomerPhone2, 'address' => $customerDetailsCustomerAddress, 'address2' => $customerDetailsCustomerAddress2, 'city' => $customerDetailsCustomerCity, 'customerID' => $customerDetailsCustomerID]);
 				
 				// UPDATE customer name in sale table too
 				$updateCustomerInSaleTableSql = 'UPDATE sale SET customerName = :customerName WHERE customerID = :customerID';

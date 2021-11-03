@@ -10,10 +10,8 @@
 		
 		$itemNumber = htmlentities($_POST['itemDetailsItemNumber']);
 		$itemName = htmlentities($_POST['itemDetailsItemName']);
-		$discount = htmlentities($_POST['itemDetailsDiscount']);
 		$quantity = htmlentities($_POST['itemDetailsQuantity']);
 		$unitPrice = htmlentities($_POST['itemDetailsUnitPrice']);
-		$status = htmlentities($_POST['itemDetailsStatus']);
 		$description = htmlentities($_POST['itemDetailsDescription']);
 		
 		// Check if mandatory fields are not empty
@@ -40,14 +38,6 @@
 				exit();
 			}
 			
-			// Validate discount only if it's provided
-			if(!empty($discount)){
-				if(filter_var($discount, FILTER_VALIDATE_FLOAT) === false){
-					// Discount is not a valid floating point number
-					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid discount amount</div>';
-					exit();
-				}
-			}
 			
 			// Create image folder for uploading images
 			$itemImageFolder = $baseImageFolder . $itemNumber;
@@ -70,9 +60,9 @@
 			} else {
 				// Item does not exist, therefore, you can add it to DB as a new item
 				// Start the insert process
-				$insertItemSql = 'INSERT INTO item(itemNumber, itemName, discount, stock, unitPrice, status, description) VALUES(:itemNumber, :itemName, :discount, :stock, :unitPrice, :status, :description)';
+				$insertItemSql = 'INSERT INTO item(itemNumber, itemName, stock, unitPrice, description) VALUES(:itemNumber, :itemName, :stock, :unitPrice, :description)';
 				$insertItemStatement = $conn->prepare($insertItemSql);
-				$insertItemStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'discount' => $discount, 'stock' => $quantity, 'unitPrice' => $unitPrice, 'status' => $status, 'description' => $description]);
+				$insertItemStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'stock' => $quantity, 'unitPrice' => $unitPrice, 'description' => $description]);
 				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Item added to database.</div>';
 				exit();
 			}

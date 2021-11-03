@@ -6,7 +6,6 @@
 		
 		$itemNumber = htmlentities($_POST['saleDetailsItemNumber']);
 		$itemName = htmlentities($_POST['saleDetailsItemName']);
-		$discount = htmlentities($_POST['saleDetailsDiscount']);
 		$quantity = htmlentities($_POST['saleDetailsQuantity']);
 		$unitPrice = htmlentities($_POST['saleDetailsUnitPrice']);
 		$customerID = htmlentities($_POST['saleDetailsCustomerID']);
@@ -64,15 +63,7 @@
 				exit();
 			}
 			
-			// Validate discount only if it's provided
-			if(!empty($discount)){
-				if(filter_var($discount, FILTER_VALIDATE_FLOAT) === false){
-					// Discount is not a valid floating point number
-					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid discount amount</div>';
-					exit();
-				}
-			}
-
+		
 			// Calculate the stock values
 			$stockSql = 'SELECT stock FROM item WHERE itemNumber = :itemNumber';
 			$stockStatement = $conn->prepare($stockSql);
@@ -106,9 +97,9 @@
 						$customerName = $customerRow['fullName'];
 						
 						// INSERT data to sale table
-						$insertSaleSql = 'INSERT INTO sale(itemNumber, itemName, discount, quantity, unitPrice, customerID, customerName, saleDate) VALUES(:itemNumber, :itemName, :discount, :quantity, :unitPrice, :customerID, :customerName, :saleDate)';
+						$insertSaleSql = 'INSERT INTO sale(itemNumber, itemName, quantity, unitPrice, customerID, customerName, saleDate) VALUES(:itemNumber, :itemName, :quantity, :unitPrice, :customerID, :customerName, :saleDate)';
 						$insertSaleStatement = $conn->prepare($insertSaleSql);
-						$insertSaleStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'discount' => $discount, 'quantity' => $quantity, 'unitPrice' => $unitPrice, 'customerID' => $customerID, 'customerName' => $customerName, 'saleDate' => $saleDate]);
+						$insertSaleStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'quantity' => $quantity, 'unitPrice' => $unitPrice, 'customerID' => $customerID, 'customerName' => $customerName, 'saleDate' => $saleDate]);
 						
 						// UPDATE the stock in item table
 						$stockUpdateSql = 'UPDATE item SET stock = :stock WHERE itemNumber = :itemNumber';

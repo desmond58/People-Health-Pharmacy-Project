@@ -12,7 +12,6 @@
 		$saleDetailsUnitPrice = htmlentities($_POST['saleDetailsUnitPrice']);
 		$saleDetailsSaleID = htmlentities($_POST['saleDetailsSaleID']);
 		$saleDetailsCustomerName = htmlentities($_POST['saleDetailsCustomerName']);
-		$saleDetailsDiscount = htmlentities($_POST['saleDetailsDiscount']);
 		$saleDetailsCustomerID = htmlentities($_POST['saleDetailsCustomerID']);
 		
 		$quantityInOriginalOrder = 0;
@@ -44,16 +43,6 @@
 				exit();
 			}
 			
-			// Validate discount
-			if($saleDetailsDiscount !== ''){
-				if(filter_var($saleDetailsDiscount, FILTER_VALIDATE_FLOAT) === 0.0 || filter_var($saleDetailsDiscount, FILTER_VALIDATE_FLOAT)){
-				// Valid discount
-				} else {
-					// Discount is not a valid number
-					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid number for Discount.</div>';
-					exit();
-				}
-			}
 			
 			// Check if saleID is empty
 			if($saleDetailsSaleID == ''){ 
@@ -164,9 +153,9 @@
 					$previousItemStockUpdateStatement->execute(['stock' => $previousItemNewStock, 'itemNumber' => $originalOrderItemNumber]);
 					
 					// Finally UPDATE the sale table for new item
-					$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice, discount = :discount, quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
+					$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice,  quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
 					$updateSaleDetailsStatement = $conn->prepare($updateSaleDetailsSql);
-					$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
+					$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice,  'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
 					
 					echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Sale details updated.</div>';
 					exit();
@@ -194,9 +183,9 @@
 						$updateStockStatement->execute(['stock' => $newStock, 'itemNumber' => $saleDetailsItemNumber]);
 						
 						// Next, update the sale table
-						$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice, discount = :discount, quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
+						$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice, quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
 						$updateSaleDetailsStatement = $conn->prepare($updateSaleDetailsSql);
-						$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
+						$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
 						
 						echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Sale details updated.</div>';
 						exit();
