@@ -452,10 +452,7 @@ function reportsTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 			//dom: 'lfBrtip',
 			//dom: 'Bfrtip',
 			buttons: [
-				'copy',
 				'csv', 'excel',
-				{extend: 'pdf', orientation: 'landscape', pageSize: 'LEGAL'},
-				'print'
 			]
 		});
 	});
@@ -471,11 +468,8 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 		$(tableID).DataTable({
 			dom: 'lBfrtip',
 			buttons: [
-				'copy',
 				{extend: 'csv', footer: true, title: 'Purchase Report'},
 				{extend: 'excel', footer: true, title: 'Purchase Report'},
-				{extend: 'pdf', footer: true, orientation: 'landscape', pageSize: 'LEGAL', title: 'Purchase Report'},
-				{extend: 'print', footer: true, title: 'Purchase Report'},
 			],
 			"footerCallback": function ( row, data, start, end, display ) {
 				var api = this.api(), data;
@@ -555,11 +549,8 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 		$(tableID).DataTable({
 			dom: 'lBfrtip',
 			buttons: [
-				'copy',
 				{extend: 'csv', footer: true, title: 'Sale Report'},
 				{extend: 'excel', footer: true, title: 'Sale Report'},
-				{extend: 'pdf', footer: true, orientation: 'landscape', pageSize: 'LEGAL', title: 'Sale Report'},
-				{extend: 'print', footer: true, title: 'Sale Report'},
 			],
 			"footerCallback": function ( row, data, start, end, display ) {
 				var api = this.api(), data;
@@ -651,11 +642,8 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 			$('#' + tableID).DataTable({
 				dom: 'lBfrtip',
 				buttons: [
-					'copy',
 					{extend: 'csv', footer: true, title: 'Sale Report'},
 					{extend: 'excel', footer: true, title: 'Sale Report'},
-					{extend: 'pdf', footer: true, orientation: 'landscape', pageSize: 'LEGAL', title: 'Sale Report'},
-					{extend: 'print', footer: true, title: 'Sale Report'},
 				],
 				"footerCallback": function ( row, data, start, end, display ) {
 					var api = this.api(), data;
@@ -748,11 +736,8 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 			$('#' + tableID).DataTable({
 				dom: 'lBfrtip',
 				buttons: [
-					'copy',
 					{extend: 'csv', footer: true, title: 'Purchase Report'},
 					{extend: 'excel', footer: true, title: 'Purchase Report'},
-					{extend: 'pdf', footer: true, orientation: 'landscape', pageSize: 'LEGAL', title: 'Purchase Report'},
-					{extend: 'print', footer: true, title: 'Purchase Report'}
 				],
 				"footerCallback": function ( row, data, start, end, display ) {
 					var api = this.api(), data;
