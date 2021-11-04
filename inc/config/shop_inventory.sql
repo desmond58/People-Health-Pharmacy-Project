@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 03:16 PM
+-- Generation Time: Nov 04, 2021 at 03:41 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -36,8 +36,6 @@ CREATE TABLE `customer` (
   `address` varchar(255) NOT NULL,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(30) DEFAULT NULL,
-  `district` varchar(30) NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'Active',
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,12 +43,12 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `phone2`, `address`, `address2`, `city`, `district`, `status`, `createdOn`) VALUES
-(43, 'Ng Xin Ni', 'xinni75@gmail.com', 1128139195, 1113111311, '7, Jalan 1, Taman Sungai Besi', 'Sungai Besi', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:47:13'),
-(44, 'Liew Li Jin', 'lijin@gmail.com', 1132425262, 125438769, '1-1, Taman Tasik damai', 'Puchong', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:49:35'),
-(45, 'Ming Xuan ', 'mingxuan@gmail.com', 124353663, 124567890, '2, Jalan 2, Taman Bestari', 'Sri Petaling', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:52:06'),
-(46, 'Desmond Foo Chi Ping', 'desmondfoo@gmail.com', 129090898, 128989098, '3-3, Jalan 3/149J, Taman Cheras', 'Cheras', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:55:16'),
-(47, 'Daniel ', 'daniel@gmail.com', 128765987, 124563789, '4, Jalan 5a/1, Taman Dua', 'Ampang', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:57:56');
+INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `phone2`, `address`, `address2`, `city`, `createdOn`) VALUES
+(43, 'Ng Xin Ni', 'xinni75@gmail.com', 1128139195, 1113111311, '7, Jalan 1, Taman Sungai Besi', 'Sungai Besi', 'Kuala Lumpur', '2021-11-04 13:47:13'),
+(44, 'Liew Li Jin', 'lijin@gmail.com', 1132425262, 125438769, '1-1, Taman Tasik damai', 'Puchong', 'Kuala Lumpur', '2021-11-04 13:49:35'),
+(45, 'Ming Xuan ', 'mingxuan@gmail.com', 124353663, 124567890, '2, Jalan 2, Taman Bestari', 'Sri Petaling', 'Kuala Lumpur', '2021-11-04 13:52:06'),
+(46, 'Desmond Foo Chi Ping', 'desmondfoo@gmail.com', 129090898, 128989098, '3-3, Jalan 3/149J, Taman Cheras', 'Cheras', 'Kuala Lumpur', '2021-11-04 13:55:16'),
+(47, 'Daniel ', 'daniel@gmail.com', 128765987, 124563789, '4, Jalan 5a/1, Taman Dua', 'Ampang', 'Kuala Lumpur', '2021-11-04 13:57:56');
 
 -- --------------------------------------------------------
 
@@ -62,11 +60,9 @@ CREATE TABLE `item` (
   `productID` int(11) NOT NULL,
   `itemNumber` varchar(255) NOT NULL,
   `itemName` varchar(255) NOT NULL,
-  `discount` float NOT NULL DEFAULT 0,
   `stock` int(11) NOT NULL DEFAULT 0,
   `unitPrice` float NOT NULL DEFAULT 0,
   `imageURL` varchar(255) NOT NULL DEFAULT 'imageNotAvailable.jpg',
-  `status` varchar(255) NOT NULL DEFAULT 'Active',
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -74,10 +70,10 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `discount`, `stock`, `unitPrice`, `imageURL`, `status`, `description`) VALUES
-(51, '1', '3D Fish Mouth Disposable Face Mask (10 pcs)', 0, 5, 3, '1634909120_FnXHpqEm1632554060-1242x1107.jpeg', 'Active', '*Non-medical mask, it is a disposable mask.'),
-(52, '2', 'Infrared Forehead Thermometer LCD', 0, 10, 27.99, '1634909401_product-web_image.jpg', 'Active', 'Accurately measure your body temperature.'),
-(53, '3', 'Finger Pulse Oximeter/ Blood Oxygen Monitor/ Oxymeter OLED', 0, 20, 28.9, '1634909758_35070.jpg', 'Active', 'Accurately measure your heart rate and blood oxygen level.');
+INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `stock`, `unitPrice`, `imageURL`, `description`) VALUES
+(51, '1', '3D Fish Mouth Disposable Face Mask (10 pcs)', 20, 3, '1634909120_FnXHpqEm1632554060-1242x1107.jpeg', '*Non-medical mask, it is a disposable mask.'),
+(52, '2', 'Infrared Forehead Thermometer LCD', 20, 27.99, '1634909401_product-web_image.jpg', 'Accurately measure your body temperature.'),
+(53, '3', 'Finger Pulse Oximeter/ Blood Oxygen Monitor/ Oxymeter OLED', 20, 28.9, '1634909758_35070.jpg', 'Accurately measure your heart rate and blood oxygen level.');
 
 -- --------------------------------------------------------
 
@@ -91,10 +87,16 @@ CREATE TABLE `purchase` (
   `purchaseDate` date NOT NULL,
   `itemName` varchar(255) NOT NULL,
   `unitPrice` float NOT NULL DEFAULT 0,
-  `quantity` int(11) NOT NULL DEFAULT 0,
-  `vendorName` varchar(255) NOT NULL DEFAULT 'Test Vendor',
-  `vendorID` int(11) NOT NULL DEFAULT 0
+  `quantity` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `purchase`
+--
+
+INSERT INTO `purchase` (`purchaseID`, `itemNumber`, `purchaseDate`, `itemName`, `unitPrice`, `quantity`) VALUES
+(54, '1', '2021-11-04', '3D Fish Mouth Disposable Face Mask (10 pcs)', 3, 15),
+(55, '2', '2021-11-04', 'Infrared Forehead Thermometer LCD', 27.99, 10);
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,6 @@ CREATE TABLE `sale` (
   `customerName` varchar(255) NOT NULL,
   `itemName` varchar(255) NOT NULL,
   `saleDate` date NOT NULL,
-  `discount` float NOT NULL DEFAULT 0,
   `quantity` int(11) NOT NULL DEFAULT 0,
   `unitPrice` float(10,0) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -118,11 +119,11 @@ CREATE TABLE `sale` (
 -- Dumping data for table `sale`
 --
 
-INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `discount`, `quantity`, `unitPrice`) VALUES
-(20, '1', 43, 'Ng Xin Ni', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-11-04', 0, 5, 3),
-(21, '2', 45, 'Ming Xuan ', 'Infrared Forehead Thermometer LCD', '2021-11-01', 0, 10, 28),
-(22, '1', 44, 'Liew Li Jin', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-10-21', 0, 5, 3),
-(23, '1', 47, 'Daniel ', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-09-15', 0, 2, 3);
+INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `quantity`, `unitPrice`) VALUES
+(20, '1', 43, 'Ng Xin Ni', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-11-04', 5, 3),
+(21, '2', 45, 'Ming Xuan ', 'Infrared Forehead Thermometer LCD', '2021-11-01', 10, 28),
+(22, '1', 44, 'Liew Li Jin', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-10-21', 5, 3),
+(23, '1', 47, 'Daniel ', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-09-15', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -134,16 +135,15 @@ CREATE TABLE `user` (
   `userID` int(11) NOT NULL,
   `fullName` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'Active'
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `fullName`, `username`, `password`, `status`) VALUES
-(10, 'Liew', 'lijinliew', '827ccb0eea8a706c4c34a16891f84e7b', 'Active');
+INSERT INTO `user` (`userID`, `fullName`, `username`, `password`) VALUES
+(10, 'Liew', 'lijinliew', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Indexes for dumped tables
@@ -199,7 +199,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `sale`
