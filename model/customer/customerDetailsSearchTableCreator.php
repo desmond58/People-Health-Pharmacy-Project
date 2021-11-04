@@ -12,8 +12,8 @@
 						<th>Customer ID</th>
 						<th>Full Name</th>
 						<th>Email</th>
-						<th>Mobile</th>
-						<th>Phone 2</th>
+						<th>Phone (mobile)</th>
+						<th>Phone (work)</th>
 						<th>Address</th>
 						<th>Address 2</th>
 						<th>City</th>
@@ -43,8 +43,8 @@
 							<th>Customer ID</th>
 							<th>Full Name</th>
 							<th>Email</th>
-							<th>Mobile</th>
-							<th>Phone 2</th>
+							<th>Phone (mobile)</th>
+							<th>Phone (work)</th>
 							<th>Address</th>
 							<th>Address 2</th>
 							<th>City</th>

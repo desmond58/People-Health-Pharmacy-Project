@@ -308,7 +308,7 @@
 										<input type="text" class="form-control invTooltip" id="customerDetailsCustomerMobile" name="customerDetailsCustomerMobile" title="Do not enter leading 0">
 									</div>
 									<div class="form-group col-md-3">
-										<label for="customerDetailsCustomerPhone2">Phone 2</label>
+										<label for="customerDetailsCustomerPhone2">Phone (work)</label>
 										<input type="text" class="form-control invTooltip" id="customerDetailsCustomerPhone2" name="customerDetailsCustomerPhone2" title="Do not enter leading 0">
 									</div>
 									<div class="form-group col-md-6">
