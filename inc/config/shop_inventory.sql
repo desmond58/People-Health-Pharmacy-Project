@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 02:34 PM
+-- Generation Time: Nov 04, 2021 at 03:16 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -41,6 +41,17 @@ CREATE TABLE `customer` (
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `phone2`, `address`, `address2`, `city`, `district`, `status`, `createdOn`) VALUES
+(43, 'Ng Xin Ni', 'xinni75@gmail.com', 1128139195, 1113111311, '7, Jalan 1, Taman Sungai Besi', 'Sungai Besi', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:47:13'),
+(44, 'Liew Li Jin', 'lijin@gmail.com', 1132425262, 125438769, '1-1, Taman Tasik damai', 'Puchong', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:49:35'),
+(45, 'Ming Xuan ', 'mingxuan@gmail.com', 124353663, 124567890, '2, Jalan 2, Taman Bestari', 'Sri Petaling', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:52:06'),
+(46, 'Desmond Foo Chi Ping', 'desmondfoo@gmail.com', 129090898, 128989098, '3-3, Jalan 3/149J, Taman Cheras', 'Cheras', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:55:16'),
+(47, 'Daniel ', 'daniel@gmail.com', 128765987, 124563789, '4, Jalan 5a/1, Taman Dua', 'Ampang', 'Kuala Lumpur', '', 'Active', '2021-11-04 13:57:56');
+
 -- --------------------------------------------------------
 
 --
@@ -64,8 +75,8 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `discount`, `stock`, `unitPrice`, `imageURL`, `status`, `description`) VALUES
-(51, '1', '3D Fish Mouth Disposable Face Mask (10 pcs)', 0, 17, 3, '1634909120_FnXHpqEm1632554060-1242x1107.jpeg', 'Active', '*Non-medical mask, it is a disposable mask.'),
-(52, '2', 'Infrared Forehead Thermometer LCD', 0, 20, 27.99, '1634909401_product-web_image.jpg', 'Active', 'Accurately measure your body temperature.'),
+(51, '1', '3D Fish Mouth Disposable Face Mask (10 pcs)', 0, 5, 3, '1634909120_FnXHpqEm1632554060-1242x1107.jpeg', 'Active', '*Non-medical mask, it is a disposable mask.'),
+(52, '2', 'Infrared Forehead Thermometer LCD', 0, 10, 27.99, '1634909401_product-web_image.jpg', 'Active', 'Accurately measure your body temperature.'),
 (53, '3', 'Finger Pulse Oximeter/ Blood Oxygen Monitor/ Oxymeter OLED', 0, 20, 28.9, '1634909758_35070.jpg', 'Active', 'Accurately measure your heart rate and blood oxygen level.');
 
 -- --------------------------------------------------------
@@ -102,6 +113,16 @@ CREATE TABLE `sale` (
   `quantity` int(11) NOT NULL DEFAULT 0,
   `unitPrice` float(10,0) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `discount`, `quantity`, `unitPrice`) VALUES
+(20, '1', 43, 'Ng Xin Ni', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-11-04', 0, 5, 3),
+(21, '2', 45, 'Ming Xuan ', 'Infrared Forehead Thermometer LCD', '2021-11-01', 0, 10, 28),
+(22, '1', 44, 'Liew Li Jin', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-10-21', 0, 5, 3),
+(23, '1', 47, 'Daniel ', '3D Fish Mouth Disposable Face Mask (10 pcs)', '2021-09-15', 0, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -166,7 +187,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -184,7 +205,7 @@ ALTER TABLE `purchase`
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `saleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `saleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user`
