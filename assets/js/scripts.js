@@ -334,7 +334,7 @@ $(document).ready(function(){
 	});
 
 	// Calculate Total in sale tab
-	$('#saleDetailsDiscount, #saleDetailsQuantity, #saleDetailsUnitPrice').change(function(){
+	$('#saleDetailsQuantity, #saleDetailsUnitPrice').change(function(){
 		calculateTotalInSaleTab();
 	});
 	
@@ -484,7 +484,7 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 	 
 				// Quantity total over all pages
 				quantityTotal = api
-					.column( 6 )
+					.column( 4 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -492,7 +492,7 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 	 
 				// Quantity for current page
 				quantityFilteredTotal = api
-					.column( 6, { page: 'current'} )
+					.column( 4, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -500,7 +500,7 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 				
 				// Unit price total over all pages
 				unitPriceTotal = api
-					.column( 7 )
+					.column( 5 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -508,7 +508,7 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 				
 				// Unit price for current page
 				unitPriceFilteredTotal = api
-					.column( 7, { page: 'current'} )
+					.column( 5, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -516,7 +516,7 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 					
 				// Full price total over all pages
 				fullPriceTotal = api
-					.column( 8 )
+					.column( 6 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -524,16 +524,16 @@ function reportsPurchaseTableCreator(tableContainerDiv, tableCreatorFileUrl, tab
 				
 				// Full price for current page
 				fullPriceFilteredTotal = api
-					.column( 8, { page: 'current'} )
+					.column( 6, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
 					}, 0 );
 	 
 				// Update footer columns
-				$( api.column( 6 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
-				$( api.column( 7 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
-				$( api.column( 8 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
+				$( api.column( 4 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
+				$( api.column( 5 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
+				$( api.column( 6 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
 			}
 		});
 	});
@@ -565,7 +565,7 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 	 
 				// Quantity Total over all pages
 				quantityTotal = api
-					.column( 7 )
+					.column( 6 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -573,7 +573,7 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 	 
 				// Quantity Total over this page
 				quantityFilteredTotal = api
-					.column( 7, { page: 'current'} )
+					.column( 6, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -581,7 +581,7 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 				
 				// Unit price Total over all pages
 				unitPriceTotal = api
-					.column( 8 )
+					.column( 7 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -589,7 +589,7 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 				
 				// Unit price total over current page
 				unitPriceFilteredTotal = api
-					.column( 8, { page: 'current'} )
+					.column( 7, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -597,7 +597,7 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 					
 				// Full price Total over all pages
 				fullPriceTotal = api
-					.column( 9 )
+					.column( 8 )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
@@ -605,16 +605,16 @@ function reportsSaleTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 				
 				// Full price total over current page
 				fullPriceFilteredTotal = api
-					.column( 9, { page: 'current'} )
+					.column( 8, { page: 'current'} )
 					.data()
 					.reduce( function (a, b) {
 						return intVal(a) + intVal(b);
 					}, 0 );
 	 
 				// Update footer columns
-				$( api.column( 7 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
-				$( api.column( 8 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
-				$( api.column( 9 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
+				$( api.column( 6 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
+				$( api.column( 7 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
+				$( api.column( 8 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
 			}
 		});
 	});
@@ -658,7 +658,7 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 		 
 					// Total over all pages
 					quantityTotal = api
-						.column( 7 )
+						.column( 6 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -666,7 +666,7 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 		 
 					// Total over this page
 					quantityFilteredTotal = api
-						.column( 7, { page: 'current'} )
+						.column( 6, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -674,7 +674,7 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 					
 					// Total over all pages
 					unitPriceTotal = api
-						.column( 8 )
+						.column( 7 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -682,7 +682,7 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 					
 					// Quantity total
 					unitPriceFilteredTotal = api
-						.column( 8, { page: 'current'} )
+						.column( 7, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -690,7 +690,7 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 						
 					// Full total over all pages
 					fullPriceTotal = api
-						.column( 9 )
+						.column( 8 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -698,16 +698,16 @@ function filteredSaleReportTableCreator(startDate, endDate, scriptPath, tableDIV
 					
 					// Full total over current page
 					fullPriceFilteredTotal = api
-						.column( 9, { page: 'current'} )
+						.column( 8, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
 						}, 0 );
 		 
 					// Update footer columns
-					$( api.column( 7 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
-					$( api.column( 8 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
-					$( api.column( 9 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
+					$( api.column( 6 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
+					$( api.column( 7 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
+					$( api.column( 8 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
 				}
 			});
 		}
@@ -752,7 +752,7 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 		 
 					// Quantity total over all pages
 					quantityTotal = api
-						.column( 6 )
+						.column( 4 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -760,7 +760,7 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 		 
 					// Quantity for current page
 					quantityFilteredTotal = api
-						.column( 6, { page: 'current'} )
+						.column( 4, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -768,7 +768,7 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 					
 					// Unit price total over all pages
 					unitPriceTotal = api
-						.column( 7 )
+						.column( 5 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -776,7 +776,7 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 					
 					// Unit price for current page
 					unitPriceFilteredTotal = api
-						.column( 7, { page: 'current'} )
+						.column( 5, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -784,7 +784,7 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 					
 					// Full price total over all pages
 					fullPriceTotal = api
-						.column( 8 )
+						.column( 6 )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
@@ -792,16 +792,16 @@ function filteredPurchaseReportTableCreator(startDate, endDate, scriptPath, tabl
 					
 					// Full price for current page
 					fullPriceFilteredTotal = api
-						.column( 8, { page: 'current'} )
+						.column( 6, { page: 'current'} )
 						.data()
 						.reduce( function (a, b) {
 							return intVal(a) + intVal(b);
 						}, 0 );
 		 
 					// Update footer columns
-					$( api.column( 6 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
-					$( api.column( 7 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
-					$( api.column( 8 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
+					$( api.column( 4 ).footer() ).html(quantityFilteredTotal +' ('+ quantityTotal +' total)');
+					$( api.column( 5 ).footer() ).html(unitPriceFilteredTotal +' ('+ unitPriceTotal +' total)');
+					$( api.column( 6 ).footer() ).html(fullPriceFilteredTotal +' ('+ fullPriceTotal +' total)');
 				}
 			});
 		}
@@ -821,7 +821,6 @@ function calculateTotalInPurchaseTab(){
 function calculateTotalInSaleTab(){
 	var quantityST = $('#saleDetailsQuantity').val();
 	var unitPriceST = $('#saleDetailsUnitPrice').val();
-	var discountST = $('#saleDetailsDiscount').val();
 	$('#saleDetailsTotal').val(Number(unitPriceST) * Number(quantityST));
 }
 
@@ -866,7 +865,6 @@ function addCustomer() {
 function addItem() {
 	var itemDetailsItemNumber = $('#itemDetailsItemNumber').val();
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
-	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
 	var itemDetailsDescription = $('#itemDetailsDescription').val();
@@ -877,7 +875,6 @@ function addItem() {
 		data: {
 			itemDetailsItemNumber:itemDetailsItemNumber,
 			itemDetailsItemName:itemDetailsItemName,
-			itemDetailsDiscount:itemDetailsDiscount,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
 			itemDetailsDescription:itemDetailsDescription,
@@ -934,7 +931,6 @@ function addPurchase() {
 function addSale() {
 	var saleDetailsItemNumber = $('#saleDetailsItemNumber').val();
 	var saleDetailsItemName = $('#saleDetailsItemName').val();
-	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
 	var saleDetailsQuantity = $('#saleDetailsQuantity').val();
 	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
@@ -947,7 +943,6 @@ function addSale() {
 		data: {
 			saleDetailsItemNumber:saleDetailsItemNumber,
 			saleDetailsItemName:saleDetailsItemName,
-			saleDetailsDiscount:saleDetailsDiscount,
 			saleDetailsQuantity:saleDetailsQuantity,
 			saleDetailsUnitPrice:saleDetailsUnitPrice,
 			saleDetailsCustomerID:saleDetailsCustomerID,
@@ -989,7 +984,6 @@ function getItemDetailsToPopulate(){
 			//$('#itemDetailsItemNumber').val(data.itemNumber);
 			$('#itemDetailsProductID').val(data.productID);
 			$('#itemDetailsItemName').val(data.itemName);
-			$('#itemDetailsDiscount').val(data.discount);
 			$('#itemDetailsTotalStock').val(data.stock);
 			$('#itemDetailsUnitPrice').val(data.unitPrice);
 			$('#itemDetailsDescription').val(data.description);
@@ -1025,7 +1019,6 @@ function getItemDetailsToPopulateForSaleTab(){
 		success: function(data){
 			//$('#saleDetailsItemNumber').val(data.itemNumber);
 			$('#saleDetailsItemName').val(data.itemName);
-			$('#saleDetailsDiscount').val(data.discount);
 			$('#saleDetailsTotalStock').val(data.stock);
 			$('#saleDetailsUnitPrice').val(data.unitPrice);
 
@@ -1039,7 +1032,6 @@ function getItemDetailsToPopulateForSaleTab(){
 			}
 		},
 		complete: function() {
-			//$('#saleDetailsDiscount, #saleDetailsQuantity, #saleDetailsUnitPrice').trigger('change');
 			calculateTotalInSaleTab();
 		}
 	});
@@ -1273,7 +1265,6 @@ function getSaleDetailsToPopulate(){
 			$('#saleDetailsCustomerName').val(data.customerName);
 			$('#saleDetailsItemName').val(data.itemName);
 			$('#saleDetailsSaleDate').val(data.saleDate);
-			$('#saleDetailsDiscount').val(data.discount);
 			$('#saleDetailsQuantity').val(data.quantity);
 			$('#saleDetailsUnitPrice').val(data.unitPrice);
 		},
@@ -1289,7 +1280,6 @@ function getSaleDetailsToPopulate(){
 function updateItem() {
 	var itemDetailsItemNumber = $('#itemDetailsItemNumber').val();
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
-	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
 	var itemDetailsDescription = $('#itemDetailsDescription').val();
@@ -1300,7 +1290,6 @@ function updateItem() {
 		data: {
 			itemNumber:itemDetailsItemNumber,
 			itemDetailsItemName:itemDetailsItemName,
-			itemDetailsDiscount:itemDetailsDiscount,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
 			itemDetailsDescription:itemDetailsDescription,
@@ -1408,7 +1397,6 @@ function updateSale() {
 	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
 	var saleDetailsSaleID = $('#saleDetailsSaleID').val();
 	var saleDetailsCustomerName = $('#saleDetailsCustomerName').val();
-	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
 	
 	$.ajax({
@@ -1422,7 +1410,6 @@ function updateSale() {
 			saleDetailsUnitPrice:saleDetailsUnitPrice,
 			saleDetailsSaleID:saleDetailsSaleID,
 			saleDetailsCustomerName:saleDetailsCustomerName,
-			saleDetailsDiscount:saleDetailsDiscount,
 			saleDetailsCustomerID:saleDetailsCustomerID,
 		},
 		success: function(data){
