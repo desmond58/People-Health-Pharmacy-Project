@@ -11,7 +11,7 @@
 		$purchaseDetailsStatement = $conn->prepare($purchaseDetailsSql);
 		$purchaseDetailsStatement->execute(['purchaseID' => $purchaseID]);
 		
-		// If data is found for the given purchaseID, return it as a json object
+		// If data is found for the given purchaseID, return it as json object
 		if($purchaseDetailsStatement->rowCount() > 0) {
 			$row = $purchaseDetailsStatement->fetch(PDO::FETCH_ASSOC);
 			echo json_encode($row);
