@@ -18,7 +18,7 @@
 					<thead>
 						<tr>
 							<th>Sale ID</th>
-							<th>Item Number</th>
+							<th>Product ID</th>						
 							<th>Customer ID</th>
 							<th>Customer Name</th>
 							<th>Item Name</th>
