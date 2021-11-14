@@ -14,7 +14,7 @@
 				<thead>
 					<tr>
 						<th>Purchase ID</th>
-						<th>Item Number</th>
+						<th>Product ID</th>						
 						<th>Purchase Date</th>
 						<th>Item Name</th>
 						<th>Unit Price</th>
@@ -47,7 +47,7 @@
 					<tfoot>
 						<tr>
 							<th>Purchase ID</th>
-							<th>Item Number</th>
+							<th>Product ID</th>						
 							<th>Purchase Date</th>
 							<th>Item Name</th>
 							<th>Unit Price</th>

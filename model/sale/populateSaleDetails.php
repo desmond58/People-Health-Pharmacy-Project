@@ -11,7 +11,7 @@
 		$saleDetailsStatement = $conn->prepare($saleDetailsSql);
 		$saleDetailsStatement->execute(['saleID' => $saleID]);
 		
-		// If data is found for the given saleID, return it as a json object
+		// If data is found for the given saleID, return it as json object
 		if($saleDetailsStatement->rowCount() > 0) {
 			$row = $saleDetailsStatement->fetch(PDO::FETCH_ASSOC);
 			echo json_encode($row);

@@ -9,8 +9,8 @@
 	$output = '<table id="itemReportsTable" class="table table-sm table-striped table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
-						<th>Product ID</th>
 						<th>Item Number</th>
+						<th>Product ID</th>
 						<th>Item Name</th>
 						<th>Stock</th>
 						<th>Unit Price</th>
@@ -37,8 +37,8 @@
 	$output .= '</tbody>
 					<tfoot>
 						<tr>
-							<th>Product ID</th>
 							<th>Item Number</th>
+							<th>Product ID</th>
 							<th>Item Name</th>
 							<th>Stock</th>
 							<th>Unit Price</th>
