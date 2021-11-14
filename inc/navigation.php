@@ -1,4 +1,6 @@
 	<!-- Navigation -->
+  <script src="https://kit.fontawesome.com/bbb8a829b5.js" crossorigin="anonymous"></script>
+
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0ABAB5">
       <div class="container">
         <a class="navbar-brand" href="<?php echo ROOT_URL; ?>">Sales Reporting System</a>
@@ -12,7 +14,58 @@
 					<input class="form-control col-md-8 mr-sm-2" type="text" placeholder="Search">
 					<button class="btn btn-success" type="submit">Search</button>
 				</form>
-			</li> -->
+			</li> --> 
+      <?php 
+        // include("dbcon.php");
+
+        // $quantity = "10";
+        // $select_sql1 = "SELECT * FROM stock where remain_quantity <= '$quantity' and status='Available'";
+        // $result1 = mysqli_query($con,$select_sql1);
+        $row2 = 0;
+
+      //  if($row2 == 0){
+
+      //     <a href="#" class="notification label-inverse" >
+      //         <span class="icon-exclamation-sign icon-large"></span></a>
+
+      //   }else{
+      //     echo ' <a  href="qty_alert.php" class="notification label-inverse" id="popup">
+      //         <span class="icon-exclamation-sign icon-large"></span>
+      //         <span class="badge">'.$row2.'</span></a>';
+
+  
+      //   }
+        ?> 
+        <li class="nav-item">
+          <?php
+            // $date = date('d-m-Y');    
+            // $inc_date = date("Y-m-d", strtotime("+6 month", strtotime($date))); 
+            // $select_sql = "SELECT  * FROM stock WHERE expire_date <= '$inc_date' and status='Available' ";
+            // $result =  mysqli_query($con,$select_sql); 
+            // $row1 = $result->num_rows;
+
+            // if($row1 == 0){
+
+            //     echo ' <a  href="#" class="notification label-inverse" >
+            //     <span class="icon-bell icon-large"></span></a>';
+
+            // }else{
+            // echo ' <a  href="ex_alert.php" class="notification label-inverse" id="popup">
+            //     <span class="icon-bell icon-large"></span>
+            //     <span class="badge">'.$row1.'</span></a>';
+
+            // }
+          ?>
+        </li>
+        <li class="nav-item">
+          <span class="bell icon-exclamation-sign fas fa-exclamation-circle "></span>
+              <span class="noti"><?php echo $row2; ?></span></a>
+              </li>
+        <li class="nav-item">
+          <span class="bell icon-exclamation-sign far fa-bell "></span>
+              <span class="noti"><?php echo $row2; ?></span></a>
+              </li>
+              
 			<li class="nav-item">
 				<span class="nav-link">Welcome, <?php echo $_SESSION['fullName']; ?></span>
             </li>
