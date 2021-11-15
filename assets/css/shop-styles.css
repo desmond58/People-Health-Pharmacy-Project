@@ -71,3 +71,13 @@ body {
 .blueText {
 	color: #8f8c8c;
 }
+
+.noti{
+  position: absolute;
+  top: -1px;
+  right: 1px;
+  padding: 4px 7px 4px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
