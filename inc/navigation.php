@@ -37,35 +37,10 @@
       //   }
         ?> 
         <li class="nav-item">
-          <?php
-            // $date = date('d-m-Y');    
-            // $inc_date = date("Y-m-d", strtotime("+6 month", strtotime($date))); 
-            // $select_sql = "SELECT  * FROM stock WHERE expire_date <= '$inc_date' and status='Available' ";
-            // $result =  mysqli_query($con,$select_sql); 
-            // $row1 = $result->num_rows;
-
-            // if($row1 == 0){
-
-            //     echo ' <a  href="#" class="notification label-inverse" >
-            //     <span class="icon-bell icon-large"></span></a>';
-
-            // }else{
-            // echo ' <a  href="ex_alert.php" class="notification label-inverse" id="popup">
-            //     <span class="icon-bell icon-large"></span>
-            //     <span class="badge">'.$row1.'</span></a>';
-
-            // }
-          ?>
-        </li>
-        <li class="nav-item">
-          <span class="bell icon-exclamation-sign fas fa-exclamation-circle "></span>
-              <span class="noti"><?php echo $row2; ?></span></a>
-              </li>
-        <li class="nav-item">
+          <a href="model/notification/qty_alert.php" class="notification" id="popup">
           <span class="bell icon-exclamation-sign far fa-bell "></span>
               <span class="noti"><?php echo $row2; ?></span></a>
               </li>
-              
 			<li class="nav-item">
 				<span class="nav-link">Welcome, <?php echo $_SESSION['fullName']; ?></span>
             </li>

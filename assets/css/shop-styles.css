@@ -73,11 +73,20 @@ body {
 }
 
 .noti{
-  position: absolute;
   top: -1px;
   right: 1px;
-  padding: 4px 7px 4px 5px;
+  padding: 2px 5px 2px 5px;
   border-radius: 50%;
   background-color: red;
   color: white;
+}
+.notification{
+background-color: #0ABAB5;
+text-decoration: none;
+padding: 5px 5px 5px;
+position: relative;
+display: inline-block;
+border-radius: 2px;
+cursor: pointer;
+margin-left: 5px;
 }
