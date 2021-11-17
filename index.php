@@ -27,6 +27,18 @@
 
 		.button {background-color: #555555;}
 	</style>
+	<link rel="stylesheet" type="text/css" href="./assets/css/facebox.css">
+  	<script src="./assets/js/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="./assets/js/facebox.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  $("a[id*=popup]").facebox({
+      loadingImage : 'src/img/loading.gif',
+      closeImage   : 'src/img/closelabel.png'
+    })
+})
+</script>
 </head>
 
 <body>
