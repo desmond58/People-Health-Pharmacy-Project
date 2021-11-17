@@ -1,6 +1,5 @@
 	<!-- Navigation -->
   <script src="https://kit.fontawesome.com/bbb8a829b5.js" crossorigin="anonymous"></script>
-
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0ABAB5">
       <div class="container">
         <a class="navbar-brand" href="<?php echo ROOT_URL; ?>">Sales Reporting System</a>
@@ -15,26 +14,21 @@
 					<button class="btn btn-success" type="submit">Search</button>
 				</form>
 			</li> --> 
+
       <?php 
-        // include("dbcon.php");
+        include("dbcon.php");
 
-        // $quantity = "10";
-        // $select_sql1 = "SELECT * FROM stock where remain_quantity <= '$quantity' and status='Available'";
-        // $result1 = mysqli_query($con,$select_sql1);
-        $row2 = 0;
+        $quantity = "10";
+        $select_sql1 = "SELECT * FROM item where stock <= '$quantity'";
+        $result1 = mysqli_query($con,$select_sql1);
+        $row2 = $result1->num_rows;
 
-      //  if($row2 == 0){
+       if($row2 == 0){
 
-      //     <a href="#" class="notification label-inverse" >
-      //         <span class="icon-exclamation-sign icon-large"></span></a>
+          '<a href="#" class="notification label-inverse" >
+              <span class="icon-exclamation-sign icon-large"></span></a>';
 
-      //   }else{
-      //     echo ' <a  href="qty_alert.php" class="notification label-inverse" id="popup">
-      //         <span class="icon-exclamation-sign icon-large"></span>
-      //         <span class="badge">'.$row2.'</span></a>';
-
-  
-      //   }
+        }
         ?> 
         <li class="nav-item">
           <a href="model/notification/qty_alert.php" class="notification" id="popup">
