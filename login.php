@@ -85,9 +85,9 @@ $action = '';
 						<label for="resetPasswordPassword2">Confirm New Password</label>
 						<input type="password" class="form-control" id="resetPasswordPassword2" name="resetPasswordPassword2">
 					  </div>
-					  <a href="login.php" class="btn btn-primary" >Login</a>
-					  <a href="login.php?action=register" class="btn btn-success" >Register</a>
-					  <button type="button" id="resetPasswordButton" class="btn btn-warning" >Reset Password</button>
+					  <a href="login.php" class="btn" style="background-color: #241f20; color:white" >Login</a>
+					  <a href="login.php?action=register" class="btn" style="background-color: #241f20; color:white" >Register</a>
+					  <button type="button" id="resetPasswordButton" class="btn btn-danger" >Reset Password</button>
 					  <button type="reset" class="btn">Clear</button>
 					</form>
 				  </div>
