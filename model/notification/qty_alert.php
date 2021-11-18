@@ -9,7 +9,7 @@ if(!isset($_SESSION['loggedIn'])){
 </head>
 <body>
 <div class="stock">
-    <font size="5">Medicine Out of Stock</font><hr>
+    <font size="5">Low Stock Items</font><hr>
     <div style="overflow-x:auto; overflow-y: auto; height: 150px;">
         <table class="table table-bordered" id="table2"> 	  	
             <tr>
