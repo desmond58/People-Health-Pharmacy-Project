@@ -85,12 +85,12 @@ jQuery(document).ready(function($) {
 									<form>
 										<div class="form-row">
 											<div class="form-group col-md-3" style="display:inline-block">
-												<label for="itemDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
+												<label for="itemDetailsItemNumber">Product ID<span class="requiredIcon">*</span></label>
 												<input type="text" class="form-control" name="itemDetailsItemNumber" id="itemDetailsItemNumber" autocomplete="off">
 												<div id="itemDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
 											</div>
 											<div class="form-group col-md-3">
-												<label for="itemDetailsProductID">Product ID</label>
+												<label for="itemDetailsProductID">Item Number</label>
 												<input class="form-control invTooltip" type="number" readonly  id="itemDetailsProductID" name="itemDetailsProductID" title="This will be auto-generated when you add a new item">
 											</div>
 										</div>
@@ -174,7 +174,7 @@ jQuery(document).ready(function($) {
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-3">
-										<label for="purchaseDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
+										<label for="purchaseDetailsItemNumber">Product ID<span class="requiredIcon">*</span></label>
 										<input type="text" class="form-control" id="purchaseDetailsItemNumber" name="purchaseDetailsItemNumber" autocomplete="off">
 										<div id="purchaseDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
 									</div>
@@ -231,7 +231,7 @@ jQuery(document).ready(function($) {
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-3">
-										<label for="saleDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
+										<label for="saleDetailsItemNumber">Product ID<span class="requiredIcon">*</span></label>
 										<input type="text" class="form-control" id="saleDetailsItemNumber" name="saleDetailsItemNumber" autocomplete="off">
 										<div id="saleDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
 									</div>
